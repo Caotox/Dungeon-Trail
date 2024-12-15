@@ -6,11 +6,13 @@ public class FireCast : MonoBehaviour
 {
     public Rigidbody2D fireBall;
     public GameObject demon;
+    public DemonScript demonScript;
     public string fireDirection;
     // Start is called before the first frame update
     void Start()
     {
         demon = GameObject.FindGameObjectWithTag("Demon");
+        demonScript = GameObject.FindGameObjectWithTag("Demon").GetComponent<DemonScript>();
         if (demon != null){
         fireDirection = demon.GetComponent<DemonScript>().fireDirection;
         if (fireDirection == "right"){
@@ -32,6 +34,9 @@ public class FireCast : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    void FixedUpdate(){
+        Debug.Log(demonScript.currenthP);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "MCFleche")
@@ -43,6 +48,8 @@ public class FireCast : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Player"){
             Destroy(gameObject);
+        } else if (collision.gameObject.tag == "Demon"){
+            //Destroy(gameObject);
         }
 
     }
