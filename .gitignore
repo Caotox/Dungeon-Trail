@@ -1,0 +1,28 @@
+# Fichiers de build et dossiers temporaires
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# Autres fichiers Unity
+*.csproj
+*.unitypackage
+*.pidb
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb.meta
+*.pdb
+*.opendb
+*.VC.db
+
+# Dossiers Visual Studio Code
+.vscode/
+
+# Crash reports
+sysinfo.txt
