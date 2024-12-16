@@ -5,6 +5,15 @@ using UnityEngine;
 public class UpgradesScript : MonoBehaviour
 {
     // Start is called before the first frame update
+    Dictionary<int, string> playerUpgrades = new Dictionary<int, string>()
+    {
+        { 1, "Amélioration de la vitesse" },
+        { 2, "Amélioration de la hauteur du saut" },
+        { 3, "Tu peux spam les flèches frérot" },
+        { 4, "Tu peux spam les spells" },
+        { 5, "Augmentation de l'attaque" },
+        { 6, "Augmentation des PV max" }
+    };
     void Start()
     {
         
