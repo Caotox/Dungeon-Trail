@@ -5,9 +5,11 @@ using UnityEngine;
 public class UpgradesScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    //public List<Update> upgrades; // créer la classe Update
+    public List<Upgrade> upgrades; // créer la classe Update
     void Start()
     {
+        upgrades = new List<Upgrade>();
+        upgrades.Add(new Upgrade("Upgrade"));
     }
 
     // Update is called once per frame
