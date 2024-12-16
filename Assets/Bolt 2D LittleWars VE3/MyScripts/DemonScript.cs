@@ -38,11 +38,7 @@ public class DemonScript : MonoBehaviour
         else{
             timer -= Time.deltaTime;
         }
-        if (currenthP <= 0)
-            {
-                Destroy(gameObject);
-                //Instantiate(this.gameObject, new Vector2(6, -1.823f), transform.rotation);
-            }
+        Death();
         FlipCharacter();
         GetPositions();
         Deplacement();
@@ -117,6 +113,21 @@ public class DemonScript : MonoBehaviour
         } else {
             timerStop -= Time.deltaTime;
             Deplacement();
+        }
+    }
+    void Death(){
+        if (currenthP <= 0)
+            {
+                Destroy(gameObject);
+                //Instantiate(this.gameObject, new Vector2(6, -1.823f), transform.rotation);
+            }
+    }
+    void SpawnDemon(){
+        float timerSpawn = 4f;
+        if (timerSpawn <=0){
+            Instantiate(demonCharacter, new Vector2(6, -1.823f), transform.rotation);
+        } else {
+            timerSpawn -= Time.deltaTime;
         }
     }
 }

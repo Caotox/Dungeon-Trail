@@ -5,6 +5,7 @@ using UnityEngine;
 public class UpgradesScript : MonoBehaviour
 {
     // Start is called before the first frame update
+    //public List<Update> upgrades; // créer la classe Update
     void Start()
     {
     }
