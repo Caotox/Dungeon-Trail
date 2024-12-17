@@ -14,6 +14,15 @@ public class UpgradesScript : MonoBehaviour
         { 5, "Augmentation de l'attaque" },
         { 6, "Augmentation des PV max" }
     };
+    Dictionary<int, int> upgradeProba = new Dictionary<int , int>()
+    {
+        { 1, 20},
+        { 2, 20},
+        { 3, 5},
+        { 4, 5},
+        { 5, 10},
+        { 6, 40}
+    };
     void Start()
     {
         
