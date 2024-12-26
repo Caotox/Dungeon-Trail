@@ -35,7 +35,7 @@ public class FireCast : MonoBehaviour
         }
     }
     void FixedUpdate(){
-        Debug.Log(demonScript.currenthP);
+        //Debug.Log(demonScript.currenthP);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
