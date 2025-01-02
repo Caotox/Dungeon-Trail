@@ -483,12 +483,12 @@ Transform:
   m_GameObject: {fileID: 359544542}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.1169548, y: -0.9355972, z: -0.0063161883}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1191383045}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 599721725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &398845761
 GameObject:
@@ -698,7 +698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &599721725
 Transform:
   m_ObjectHideFlags: 0
@@ -713,6 +713,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 940695170}
+  - {fileID: 359544543}
+  - {fileID: 2078483341}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &750562560
@@ -2029,6 +2031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9eec3f9c1803504eb5ce9c6748d63f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCharacter: {fileID: 0}
   descriptionTemp: 
   nomUpgradeRandom: 
   nombreRandom: 0
@@ -2704,6 +2707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9eec3f9c1803504eb5ce9c6748d63f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCharacter: {fileID: 0}
   descriptionTemp: 
   nomUpgradeRandom: 
   nombreRandom: 0
@@ -2837,12 +2841,12 @@ Transform:
   m_GameObject: {fileID: 2078483340}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.1169548, y: -0.9355972, z: -0.0063161883}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2004063488}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 599721725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2082515226
 GameObject:
@@ -3149,6 +3153,4 @@ SceneRoots:
   - {fileID: 1993118674}
   - {fileID: 176323977}
   - {fileID: 599721725}
-  - {fileID: 359544543}
-  - {fileID: 2078483341}
   - {fileID: 1810127579}

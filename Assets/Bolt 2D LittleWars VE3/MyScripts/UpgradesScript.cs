@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngin.UI;
+//using UnityEngine.UI;
 //using System.Linq;
 
 // Text s'update dans le trigger après la fonction d'obtention d'upgrade --> le bouton onlick est la fonction crée pour faire l'effet de l'upgrade : longue fonction avec bcp de if
@@ -119,8 +119,8 @@ public class UpgradesScript : MonoBehaviour
             if(upgradeTemp == null){
                 Debug.Log("Erreur : Upgrade null");
             } else {
-                 EffetUpgrade(upgradeTemp);
-                 UpdateText(upgradeTemp.descriptif);            
+                EffetUpgrade(upgradeTemp);
+                //UpdateText(upgradeTemp.descriptif);            
             }
             //EffetUpgrade();
         }
