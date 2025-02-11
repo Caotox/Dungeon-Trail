@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.UI;
+using UnityEngine.UI;
 //using System.Linq;
 
 // Text s'update dans le trigger après la fonction d'obtention d'upgrade --> le bouton onlick est la fonction crée pour faire l'effet de l'upgrade : longue fonction avec bcp de if
@@ -9,15 +9,24 @@ using UnityEngine;
 public class UpgradesScript : MonoBehaviour
 {
     // Start is called before the first frame update
+    public CanvasGroup UpUI;
     public  GameObject mainCharacter;
     //public  Script mainCharacterScript;
     public Upgrade upgradeTemp;
+    public Upgrade upgrade1;
+    public Upgrade upgrade2;
+    public Upgrade upgrade3;
+    public Text Upgrade1Text;
+    public Text Upgrade2Text;
+    public Text Upgrade3Text;
+    public Text descriptionText;
     public string descriptionTemp;
     public string nomUpgradeRandom;
     public int nombreRandom;
     public int probaTemp;
     public int idTemp;
     public int indiceTemp;
+
     /*
     public Dictionary<int, string> playerUpgrades = new Dictionary<int, string>()
     {
@@ -59,6 +68,8 @@ public class UpgradesScript : MonoBehaviour
     void Start()
     {
         //nombreRandom = Random.Range(0, 100);
+        
+
     }
 
     // Update is called once per frame
@@ -66,9 +77,27 @@ public class UpgradesScript : MonoBehaviour
     {
         
     }
+    void OnTriggerEnter2D(Collider2D collider){
+        if (collider.gameObject.tag == "Player"){
+            Destroy(gameObject);
+            //upgradeTemp = ActiveUpgrade(upgrades);
+            upgrade1 = ActiveUpgrade(upgrades);
+            upgrade2 = ActiveUpgrade(upgrades);
+            upgrade3 = ActiveUpgrade(upgrades);
+            Upgrade1Text.text = upgrade1.nom;
+            Upgrade2Text.text = upgrade2.nom;
+            Upgrade3Text.text = upgrade3.nom;
+            if(upgradeTemp == null){
+                Debug.Log("Erreur : Upgrade null");
+            } else {
+                EffetUpgrade(upgradeTemp);
+                //UpdateText(upgradeTemp.descriptif);            
+            }
+            //EffetUpgrade();
+        }
+    }
     Upgrade ActiveUpgrade(List<Upgrade> upgrade){
         indiceTemp = SelectUpgrade(upgrades);
-        Debug.Log("Indice sélectionné dans ACTIVE :" + indiceTemp);
         for (int i=0; i<upgrades.Count; i++){
             if (indiceTemp == upgrade[i].id){
                 upgradeTemp = upgrade[i];
@@ -84,6 +113,17 @@ public class UpgradesScript : MonoBehaviour
     void UpdateText(Upgrade upgrade /*, UItext text*/){
         //UIText.text = upgrade.description;
     }
+    /*
+    Upgrade GiveUpgrade1{
+        // écrire fonction
+    }
+    Upgrade GiveUpgrade2{
+        // écrire fonction
+    }
+    Upgrade GiveUpgrade3{
+        // écrire fonction
+    }
+    */
     void EffetUpgrade(Upgrade upgrade){
         switch (upgrade.id){
             case 1:
@@ -110,19 +150,6 @@ public class UpgradesScript : MonoBehaviour
                 Debug.Log("PV max");
                 // effet
                 break;
-        }
-    }
-    void OnTriggerEnter2D(Collider2D collider){
-        if (collider.gameObject.tag == "Player"){
-            Destroy(gameObject);
-            upgradeTemp = ActiveUpgrade(upgrades);
-            if(upgradeTemp == null){
-                Debug.Log("Erreur : Upgrade null");
-            } else {
-                EffetUpgrade(upgradeTemp);
-                //UpdateText(upgradeTemp.descriptif);            
-            }
-            //EffetUpgrade();
         }
     }
     void AddUpgrade(List<Upgrade> upgrade, string nom, int id, int proba, string descriptif){
