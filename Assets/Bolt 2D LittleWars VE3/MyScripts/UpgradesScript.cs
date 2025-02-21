@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Unity.TextMeshPro;
+//using Unity.TextMeshPro;
+using TMPro;
 //using System.Linq;
 
 // Text s'update dans le trigger après la fonction d'obtention d'upgrade --> le bouton onlick est la fonction crée pour faire l'effet de l'upgrade : longue fonction avec bcp de if
@@ -14,13 +15,15 @@ public class UpgradesScript : MonoBehaviour
     public Button bouton1;
     public  GameObject mainCharacter;
     //public  Script mainCharacterScript;
+    public TextMeshProUGUI Upgrade1Text;
+    public TextMeshProUGUI Upgrade2Text;
+    public TextMeshProUGUI Upgrade3Text;
+
+    // TMP_Text
     public Upgrade upgradeTemp;
     public Upgrade upgrade1;
     public Upgrade upgrade2;
     public Upgrade upgrade3;
-    public TextMeshPro Upgrade1Text;
-    public TextMeshPro Upgrade2Text;
-    public TextMeshPro Upgrade3Text;
     public Text descriptionText;
     public string descriptionTemp;
     public string nomUpgradeRandom;

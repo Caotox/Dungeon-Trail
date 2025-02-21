@@ -3098,7 +3098,7 @@ MonoBehaviour:
   UpUI: {fileID: 247694247}
   bouton1: {fileID: 0}
   mainCharacter: {fileID: 1326651364}
-  Upgrade1Text: {fileID: 0}
+  Upgrade1Text: {fileID: 488817348}
   Upgrade2Text: {fileID: 0}
   Upgrade3Text: {fileID: 0}
   descriptionText: {fileID: 0}
