@@ -14,17 +14,16 @@ public class UpgradesScript : MonoBehaviour
     public CanvasGroup UpUI;
     public Button bouton1;
     public  GameObject mainCharacter;
-    //public  Script mainCharacterScript;
     public TextMeshProUGUI Upgrade1Text;
     public TextMeshProUGUI Upgrade2Text;
     public TextMeshProUGUI Upgrade3Text;
-
-    // TMP_Text
     public Upgrade upgradeTemp;
     public Upgrade upgrade1;
     public Upgrade upgrade2;
     public Upgrade upgrade3;
-    public Text descriptionText;
+    public TextMeshProUGUI descriptionText1;
+    public TextMeshProUGUI descriptionText2;
+    public TextMeshProUGUI descriptionText3;
     public string descriptionTemp;
     public string nomUpgradeRandom;
     public int nombreRandom;
@@ -84,8 +83,9 @@ public class UpgradesScript : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collider){
         if (collider.gameObject.tag == "Player"){
-            Destroy(gameObject);
+            //Destroy(gameObject);
             //upgradeTemp = ActiveUpgrade(upgrades);
+            ShowUpgradeMenu();
             upgrade1 = ActiveUpgrade(upgrades);
             upgrade2 = ActiveUpgrade(upgrades);
             upgrade3 = ActiveUpgrade(upgrades);
@@ -100,6 +100,19 @@ public class UpgradesScript : MonoBehaviour
             }
             //EffetUpgrade();
         }
+    }
+    public void ShowUpgradeMenu()
+    {
+        UpUI.alpha = 1;
+        UpUI.interactable = true;
+        UpUI.blocksRaycasts = true;
+    }
+
+    public void HideUpgradeMenu()
+    {
+        UpUI.alpha = 0;
+        UpUI.interactable = false;
+        UpUI.blocksRaycasts = false;
     }
     Upgrade ActiveUpgrade(List<Upgrade> upgrade){
         indiceTemp = SelectUpgrade(upgrades);
