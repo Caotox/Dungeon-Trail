@@ -234,26 +234,25 @@ public class MainCharacterScript : MonoBehaviour
         }
     }
     void Death(){
-        // Ajouter la logique d'animation de mort : désactiver le SpriteRenderer = false, jouer l'animation
-        if (currenthP <= 0){
-            //gameObject.SetActive(false);
-            GetComponent<SpriteRenderer>().enabled = false;
-            //GetComponent<BoxCollider2D>().enabled = false;
-            //GetComponent<Rigidbody2D>().enabled = false;
-            isDead = true;
-        }
-        if (isDead){
-            mainCharacter.velocity = new Vector2(0, 0); 
-            mainCharacter.gravityScale = 0;
-            Debug.Log("You are dead" + timerDeath);
-            if (timerDeath <= 0){
-                    SceneManager.LoadScene("Menu");
-                }
-                else{
-                    timerDeath -= Time.deltaTime;
-                }
-            }
+    if (currenthP <= 0){
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        mainCharacter.simulated = false;
+        isDead = true;
     }
+    if (isDead){
+        mainCharacter.velocity = Vector2.zero; 
+        mainCharacter.gravityScale = 0;
+        //Debug.Log("You are dead" + timerDeath);
+        if (timerDeath <= 0){
+            SceneManager.LoadScene("Menu");
+        }
+        else{
+            timerDeath -= Time.deltaTime;
+        }
+    }
+}
+
     void GripWall()
 {
     if (canGrip)

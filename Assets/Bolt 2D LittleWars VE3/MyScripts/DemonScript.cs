@@ -126,12 +126,4 @@ public class DemonScript : MonoBehaviour
                 //Instantiate(this.gameObject, new Vector2(6, -1.823f), transform.rotation);
             }
     }
-    void SpawnDemon(){
-        float timerSpawn = 4f;
-        if (timerSpawn <=0){
-            Instantiate(demonCharacter, new Vector2(6, -1.823f), transform.rotation);
-        } else {
-            timerSpawn -= Time.deltaTime;
-        }
-    }
 }

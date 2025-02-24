@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95878c475445df74e8e1eb0231d4248b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  demonCharacter: {fileID: 0}
+  demonCharacter: {fileID: 321236642}
   currenthP: 0
   xposition: 0
   yposition: 0
@@ -560,6 +560,7 @@ MonoBehaviour:
   mainCharTransform: {fileID: 1326651369}
   timerStop: 3
   timerStop2: 2
+  timerSpawn: 4
 --- !u!95 &321236648
 Animator:
   serializedVersion: 5

@@ -73,10 +73,18 @@ public class UpgradesScript : MonoBehaviour
         new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
         new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
         new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
+    public List<Upgrade> usedUpgrades = new List<Upgrade>{};
     void Start()
     {
         //nombreRandom = Random.Range(0, 100);
         UpUI.alpha = 0;
+        upgrades= new List<Upgrade>{
+        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
+        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
+        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
+        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
+        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
+        usedUpgrades = new List<Upgrade>{};
 
     }
 
@@ -98,7 +106,9 @@ public class UpgradesScript : MonoBehaviour
             //upgradeTemp = ActiveUpgrade(upgrades);
             ShowUpgradeMenu();
             upgrade1 = ActiveUpgrade(upgrades);
+            AddUpgrade(usedUpgrades, upgrade1.nom, upgrade1.id, upgrade1.proba, upgrade1.descriptif);
             upgrade2 = ActiveUpgrade(upgrades);
+            AddUpgrade(usedUpgrades, upgrade2.nom, upgrade2.id, upgrade2.proba, upgrade2.descriptif);
             upgrade3 = ActiveUpgrade(upgrades);
             Upgrade1Text.text = upgrade1.nom;
             Upgrade2Text.text = upgrade2.nom;
@@ -137,12 +147,6 @@ public class UpgradesScript : MonoBehaviour
         }
         return upgradeTemp;
         
-    }
-    void UpdateText(){
-
-    }
-    void UpdateText(Upgrade upgrade /*, UItext text*/){
-        //UIText.text = upgrade.description;
     }
     int lookUpgradeByName(string name, List<Upgrade> upgrades)
     {
