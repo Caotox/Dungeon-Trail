@@ -27,6 +27,7 @@ public class DemonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (UpgradesScript.isUpgrading == false){
         if (timer <= 0){
             if (fireDirection == "right")
                 Instantiate(enemy_fireball, new Vector2(transform.position.x+1, transform .position.y), transform.rotation);
@@ -38,6 +39,7 @@ public class DemonScript : MonoBehaviour
         else{
             timer -= Time.deltaTime;
         }
+    }
         Death();
         FlipCharacter();
         GetPositions();
@@ -80,6 +82,7 @@ public class DemonScript : MonoBehaviour
     }
     void Deplacement()
     {
+        if (UpgradesScript.isUpgrading == false){
         if (fireDirection == "right"){
             if (xposition - transform.position.x > 8){ // avancer
                 demonRigid.velocity = Vector2.right * 3;
@@ -99,6 +102,7 @@ public class DemonScript : MonoBehaviour
                 demonRigid.velocity = Vector2.zero;
             }
 
+        }
         }
     }
     void StopRegu(){

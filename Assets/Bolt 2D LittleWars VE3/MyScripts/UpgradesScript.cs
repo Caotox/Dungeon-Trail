@@ -11,9 +11,11 @@ using TMPro;
 public class UpgradesScript : MonoBehaviour
 {
     // Start is called before the first frame update
+    public static bool isUpgrading = false;
     public CanvasGroup UpUI;
     public Button bouton1;
     public  GameObject mainCharacter;
+    public GameObject bouton;
     public TextMeshProUGUI Upgrade1Text;
     public TextMeshProUGUI Upgrade2Text;
     public TextMeshProUGUI Upgrade3Text;
@@ -21,6 +23,8 @@ public class UpgradesScript : MonoBehaviour
     public Upgrade upgrade1;
     public Upgrade upgrade2;
     public Upgrade upgrade3;
+    public string textChose;
+    public int idChose;
     public TextMeshProUGUI descriptionText1;
     public TextMeshProUGUI descriptionText2;
     public TextMeshProUGUI descriptionText3;
@@ -72,7 +76,7 @@ public class UpgradesScript : MonoBehaviour
     void Start()
     {
         //nombreRandom = Random.Range(0, 100);
-        
+        UpUI.alpha = 0;
 
     }
 
@@ -81,8 +85,15 @@ public class UpgradesScript : MonoBehaviour
     {
         
     }
+    void hideUpgrade(){
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+    }
     void OnTriggerEnter2D(Collider2D collider){
         if (collider.gameObject.tag == "Player"){
+            hideUpgrade();
+            mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            isUpgrading = true;
             //Destroy(gameObject);
             //upgradeTemp = ActiveUpgrade(upgrades);
             ShowUpgradeMenu();
@@ -92,10 +103,13 @@ public class UpgradesScript : MonoBehaviour
             Upgrade1Text.text = upgrade1.nom;
             Upgrade2Text.text = upgrade2.nom;
             Upgrade3Text.text = upgrade3.nom;
+            descriptionText1.text = upgrade1.descriptif;
+            descriptionText2.text = upgrade2.descriptif;
+            descriptionText3.text = upgrade3.descriptif;
             if(upgradeTemp == null){
                 Debug.Log("Erreur : Upgrade null");
             } else {
-                EffetUpgrade(upgradeTemp);
+                Debug.Log("Update selectionnée");
                 //UpdateText(upgradeTemp.descriptif);            
             }
             //EffetUpgrade();
@@ -119,7 +133,6 @@ public class UpgradesScript : MonoBehaviour
         for (int i=0; i<upgrades.Count; i++){
             if (indiceTemp == upgrade[i].id){
                 upgradeTemp = upgrade[i];
-                Debug.Log("Description Update sélectionnée :" + upgradeTemp.descriptif);
             }
         }
         return upgradeTemp;
@@ -130,6 +143,17 @@ public class UpgradesScript : MonoBehaviour
     }
     void UpdateText(Upgrade upgrade /*, UItext text*/){
         //UIText.text = upgrade.description;
+    }
+    int lookUpgradeByName(string name, List<Upgrade> upgrades)
+    {
+        for (int i=0; i<upgrades.Count; i++)
+        {
+            if (name == upgrades[i].nom)
+            {
+                return upgrades[i].id;
+            }
+        }
+        return -1;
     }
     /*
     Upgrade GiveUpgrade1{
@@ -142,30 +166,54 @@ public class UpgradesScript : MonoBehaviour
         // écrire fonction
     }
     */
-    void EffetUpgrade(Upgrade upgrade){
-        switch (upgrade.id){
-            case 1:
+    public void EffetUpgrade(){
+        bouton = GameObject.FindGameObjectWithTag("Upgrades");
+        textChose = bouton.GetComponentInChildren<TextMeshProUGUI>().text;
+        idChose = lookUpgradeByName(textChose, upgrades);
+        switch (idChose){
+            case -1 :
+                Debug.Log("Erreur : Upgrade non trouvée");
+                break;
+            case 0:
                 Debug.Log("Vitesse");
+                mainCharacter.GetComponent<MainCharacterScript>().speed += 12;
+                HideUpgradeMenu();
+                isUpgrading = false;
+                // effet
+                break;
+            case 1:
+                Debug.Log("Hauteur");
+                mainCharacter.GetComponent<MainCharacterScript>().nombreDeSautsMax += 2;
+                HideUpgradeMenu();
+                isUpgrading = false;
                 // effet
                 break;
             case 2:
-                Debug.Log("Hauteur");
+                Debug.Log("Spam flèches");
+                mainCharacter.GetComponent<MainCharacterScript>().timerArrowMax -= 1;
+                HideUpgradeMenu();
+                isUpgrading = false;
                 // effet
                 break;
             case 3:
-                Debug.Log("Spam flèches");
+                Debug.Log("Spam spells");
+                mainCharacter.GetComponent<MainCharacterScript>().timerStaffMax -= 1;
+                HideUpgradeMenu();
+                isUpgrading = false;
                 // effet
                 break;
             case 4:
-                Debug.Log("Spam spells");
+                Debug.Log("Attaque");
+                mainCharacter.GetComponent<MainCharacterScript>().attackDamage += 2;
+                HideUpgradeMenu();
+                isUpgrading = false;
                 // effet
                 break;
             case 5:
-                Debug.Log("Attaque");
-                // effet
-                break;
-            case 6:
                 Debug.Log("PV max");
+                mainCharacter.GetComponent<MainCharacterScript>().maxHP += 100;
+                HideUpgradeMenu();
+                isUpgrading = false;
                 // effet
                 break;
         }
@@ -186,7 +234,7 @@ public class UpgradesScript : MonoBehaviour
                     //indiceTemp = i;
                     nombreRandom -= upgrade[i].proba;
                     if(nombreRandom <= 0){
-                        Debug.Log("Indice sélectionné :" + (i));
+                        //Debug.Log("Indice sélectionné :" + (i));
                         return i;
                     }
                     i+=1;

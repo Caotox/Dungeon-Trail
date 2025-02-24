@@ -22,7 +22,8 @@ public class MainCharacterScript : MonoBehaviour
     public GameObject fireBall;
     public Rigidbody2D mainCharacter;
     public float speed = 7.0f;
-    public float jumpSpeed = 10.0f;
+    public float attackDamage = 20.0f;
+    public float jumpForce = 10.0f;
     public float offSet;
     public float horizontalMove;    
     public float currenthP;
@@ -30,6 +31,9 @@ public class MainCharacterScript : MonoBehaviour
     public float timerArrow = 0;
     public float timerStaff = 0;
     public float timerEpee = 0;
+    public float timerArrowMax = 1.5f;
+    public float timerStaffMax = 1.5f;
+    public float timerEpeeMax = 1.5f;
     public int nombreDeSauts = 0;
     public int nombreDeSautsMax = 2;
     public bool canArrow = true;
@@ -42,6 +46,7 @@ public class MainCharacterScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //demonScript = GameObject.FindGameObjectWithTag("Upgrades").GetComponent<UpgradesScript>();
         gameObject.SetActive(true);
         currenthP = maxHP;
         offSet = 2;
@@ -92,6 +97,7 @@ public class MainCharacterScript : MonoBehaviour
         //}
     }
     void CharacterMovement(){
+        if (UpgradesScript.isUpgrading == false){
         Vector2 moveDirection = Vector2.zero;
         if (isPlateformeLeft == false){
             if (Input.GetKey(KeyCode.A)){
@@ -106,11 +112,11 @@ public class MainCharacterScript : MonoBehaviour
         mainCharacter.velocity = new Vector2(moveDirection.x, mainCharacter.velocity.y);
         if (Input.GetKeyDown(KeyCode.W) && (nombreDeSauts < nombreDeSautsMax)){
             canGrip = false;
-            mainCharacter.velocity = new Vector2(mainCharacter.velocity.x, jumpSpeed);
+            mainCharacter.velocity = new Vector2(mainCharacter.velocity.x, jumpForce);
             nombreDeSauts = nombreDeSauts + 1;
             canGrip = true;
         }
-
+        }
     }
     void FlipCharacter(){
         Vector3 scale = mainCharacter.transform.localScale;
@@ -127,6 +133,7 @@ public class MainCharacterScript : MonoBehaviour
 
     }
     void CharacterAction(){
+        if (UpgradesScript.isUpgrading == false){
         if (Input.GetKeyDown(KeyCode.U)){
             if (canStaff){
             animator.SetTrigger("isStaffing");
@@ -134,7 +141,7 @@ public class MainCharacterScript : MonoBehaviour
             //bow.SetActive(false);
             //sword.SetActive(false);
             Instantiate(fireBall, new Vector2(transform.position.x+offSet, transform.position.y+1), transform.rotation);
-            timerStaff = 1.5f;
+            timerStaff = timerStaffMax;
             canStaff = false;
             }
         }
@@ -145,14 +152,14 @@ public class MainCharacterScript : MonoBehaviour
             //staff.SetActive(false);
             //sword.SetActive(false);
                 Instantiate(arrow, new Vector2(transform.position.x+offSet, transform.position.y), transform.rotation);
-                timerArrow = 1.5f;
+                timerArrow = timerArrowMax;
                 canArrow = false;
             }
         }
         if (Input.GetKeyDown(KeyCode.I)){
             if (canEpee){
             canEpee = false;
-            timerEpee = 1.5f;
+            timerEpee = timerEpeeMax;
             animator.SetTrigger("isAttacking");
             //sword.SetActive(true);
             //staff.SetActive(false);
@@ -163,7 +170,7 @@ public class MainCharacterScript : MonoBehaviour
             foreach (Collider2D enemy in hitEnemies)
             {
                 Debug.Log("Hit " + enemy.name);
-                enemy.GetComponent<DemonScript>().currenthP -= 20;
+                enemy.GetComponent<DemonScript>().currenthP -= attackDamage;
                 Debug.Log("HP: " + enemy.GetComponent<DemonScript>().currenthP);
             }
             foreach (Collider2D projectile in hitProjectiles)
@@ -201,6 +208,7 @@ public class MainCharacterScript : MonoBehaviour
             }
         }
     }
+        }
 }
     void OnDrawGizmosSelected(){
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
@@ -231,6 +239,7 @@ public class MainCharacterScript : MonoBehaviour
             //gameObject.SetActive(false);
             GetComponent<SpriteRenderer>().enabled = false;
             //GetComponent<BoxCollider2D>().enabled = false;
+            //GetComponent<Rigidbody2D>().enabled = false;
             isDead = true;
         }
         if (isDead){
