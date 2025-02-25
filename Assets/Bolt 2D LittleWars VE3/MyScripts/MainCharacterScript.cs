@@ -22,7 +22,6 @@ public class MainCharacterScript : MonoBehaviour
     public GameObject fireBall;
     public Rigidbody2D mainCharacter;
     public float speed = 7.0f;
-    public float attackDamage = 20.0f;
     public float jumpForce = 10.0f;
     public float offSet;
     public float horizontalMove;    
@@ -39,6 +38,9 @@ public class MainCharacterScript : MonoBehaviour
     public bool canArrow = true;
     public bool canStaff = true;
     public bool canEpee = true;
+    public float arrowDamage = 20.0f;
+    public float spellDamage = 20.0f;
+    public float attackDamage = 20.0f;
     public bool isPlateformeLeft = false;
     public bool isPlateformeRight = false;
     public float attackRange = 1.3f;

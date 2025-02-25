@@ -560,7 +560,6 @@ MonoBehaviour:
   mainCharTransform: {fileID: 1326651369}
   timerStop: 3
   timerStop2: 2
-  timerSpawn: 4
 --- !u!95 &321236648
 Animator:
   serializedVersion: 5
@@ -2373,8 +2372,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9eec3f9c1803504eb5ce9c6748d63f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  greenUpgrade: {fileID: 21300000, guid: 94cf8c0baf82b9f4b84cc5b7517f123c, type: 3}
+  blueUpgrade: {fileID: 21300000, guid: 7d84ea2cd3afbbd4ba348e44c1efcc75, type: 3}
+  violetUpgrade: {fileID: 21300000, guid: f4adfa302dd54bc4c8fad1754091df3f, type: 3}
+  legUpgrade: {fileID: 21300000, guid: 40369c5d6633dd543a37a2b92314aaa3, type: 3}
+  arrowUpgrade: {fileID: 21300000, guid: a980bb7ba2503634d83403278cc546a9, type: 3}
+  staffUpgrade: {fileID: 21300000, guid: 95e1f636528123445a2efbc2979e28f9, type: 3}
+  swordUpgrade: {fileID: 21300000, guid: 5ebd8d32bd4425d409be1c6e5b8b5924, type: 3}
+  spriteRenderer: {fileID: 1371972606}
   UpUI: {fileID: 247694247}
-  bouton1: {fileID: 0}
   mainCharacter: {fileID: 1326651364}
   bouton: {fileID: 0}
   Upgrade1Text: {fileID: 488817348}

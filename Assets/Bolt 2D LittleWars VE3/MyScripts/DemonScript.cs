@@ -52,12 +52,14 @@ public class DemonScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "MCSpell")
         {
-            currenthP -= 30;
+            float spellDamage = mainCharacter.GetComponent<MainCharacterScript>().spellDamage;
+            currenthP -= spellDamage;
             //Debug.Log("Hit FireBall : " + currenthP);
         }
         if (collision.gameObject.tag == "MCFleche")
         {
-            currenthP -= 20;
+            float arrowDamage = mainCharacter.GetComponent<MainCharacterScript>().arrowDamage;
+            currenthP -= arrowDamage;
             //Debug.Log("Hit Fleche : " + currenthP);
         }
     }

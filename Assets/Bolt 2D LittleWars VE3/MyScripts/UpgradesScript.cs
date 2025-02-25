@@ -11,9 +11,20 @@ using TMPro;
 public class UpgradesScript : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject button1;
+    public GameObject button2;
+    public GameObject button3; 
+    public Sprite greenUpgrade;
+    public Sprite blueUpgrade;
+    public Sprite violetUpgrade;
+    public Sprite legUpgrade;
+    public Sprite arrowUpgrade;
+    public Sprite staffUpgrade;
+    public Sprite swordUpgrade;
+    public SpriteRenderer spriteRenderer;
+    // spriteRenderer.sprite = newSprite;
     public static bool isUpgrading = false;
     public CanvasGroup UpUI;
-    public Button bouton1;
     public  GameObject mainCharacter;
     public GameObject bouton;
     public TextMeshProUGUI Upgrade1Text;
@@ -170,8 +181,17 @@ public class UpgradesScript : MonoBehaviour
         // écrire fonction
     }
     */
-    public void EffetUpgrade(){
-        bouton = GameObject.FindGameObjectWithTag("Upgrades");
+    public void Button1(){
+        EffetUpgrade(button1);
+    }
+    public void Button2(){
+        EffetUpgrade(button2);
+    }
+    public void Button3(){
+        EffetUpgrade(button3);
+    }
+    public void EffetUpgrade(GameObject bouton){
+        //bouton = GameObject.FindGameObjectWithTag("Upgrades");
         textChose = bouton.GetComponentInChildren<TextMeshProUGUI>().text;
         idChose = lookUpgradeByName(textChose, upgrades);
         switch (idChose){
@@ -208,7 +228,7 @@ public class UpgradesScript : MonoBehaviour
                 break;
             case 4:
                 Debug.Log("Attaque");
-                mainCharacter.GetComponent<MainCharacterScript>().attackDamage += 2;
+                mainCharacter.GetComponent<MainCharacterScript>().attackDamage += 200;
                 HideUpgradeMenu();
                 isUpgrading = false;
                 // effet
@@ -227,6 +247,9 @@ public class UpgradesScript : MonoBehaviour
         /*Array.Resize(ref upgrades, upgrades.Length + 1);
         upgrades[upgrades.Length - 1] = new upgrade("Augmentation du Mana max", 6, 40, "Augmente les points de mana maximum du joueur");*/
     }
+    void SelectRandomUpgrade(){
+        // Code
+    }
     int SelectUpgrade(List<Upgrade> upgrade){
         int i = 0;
         int iMax = upgrade.Count;
@@ -239,7 +262,16 @@ public class UpgradesScript : MonoBehaviour
                     nombreRandom -= upgrade[i].proba;
                     if(nombreRandom <= 0){
                         //Debug.Log("Indice sélectionné :" + (i));
-                        return i;
+                        for (int n=0; n<usedUpgrades.Count; n++){
+                            for (int m=0; m<upgrades.Count; m++){
+                                if (usedUpgrades[n].id != upgrades[m].id){
+                                    return i;
+                                } else {
+                                    Debug.Log("Doublon détécté");
+                                }
+                            }
+                        }
+                        //return i;
                     }
                     i+=1;
                 }
