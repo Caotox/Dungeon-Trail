@@ -22,6 +22,7 @@ public class UpgradesScript : MonoBehaviour
     public Sprite staffUpgrade;
     public Sprite swordUpgrade;
     public SpriteRenderer spriteRenderer;
+    public bool isDoublon = false;
     // spriteRenderer.sprite = newSprite;
     public static bool isUpgrading = false;
     public CanvasGroup UpUI;
@@ -78,13 +79,14 @@ public class UpgradesScript : MonoBehaviour
             this.descriptif = descriptif;
         }   
     }
+    public List<int> listId = new List<int>{};
     public List<Upgrade> upgrades= new List<Upgrade>{
         new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
         new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
         new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
         new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
         new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
-    public List<Upgrade> usedUpgrades = new List<Upgrade>{};
+
     void Start()
     {
         //nombreRandom = Random.Range(0, 100);
@@ -95,7 +97,6 @@ public class UpgradesScript : MonoBehaviour
         new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
         new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
         new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
-        usedUpgrades = new List<Upgrade>{};
 
     }
 
@@ -117,9 +118,7 @@ public class UpgradesScript : MonoBehaviour
             //upgradeTemp = ActiveUpgrade(upgrades);
             ShowUpgradeMenu();
             upgrade1 = ActiveUpgrade(upgrades);
-            AddUpgrade(usedUpgrades, upgrade1.nom, upgrade1.id, upgrade1.proba, upgrade1.descriptif);
             upgrade2 = ActiveUpgrade(upgrades);
-            AddUpgrade(usedUpgrades, upgrade2.nom, upgrade2.id, upgrade2.proba, upgrade2.descriptif);
             upgrade3 = ActiveUpgrade(upgrades);
             Upgrade1Text.text = upgrade1.nom;
             Upgrade2Text.text = upgrade2.nom;
@@ -254,7 +253,7 @@ public class UpgradesScript : MonoBehaviour
         int i = 0;
         int iMax = upgrade.Count;
         nombreRandom = Random.Range(0, 100);
-        Debug.Log("Nombre random :" + nombreRandom);
+        //Debug.Log("Nombre random :" + nombreRandom);
                 while (i < iMax){
                     //Debug.Log("indice :" + i + "upgrade :" + upgrade[i].nom);
                     //idTemp = upgrades[i].id;
@@ -262,16 +261,20 @@ public class UpgradesScript : MonoBehaviour
                     nombreRandom -= upgrade[i].proba;
                     if(nombreRandom <= 0){
                         //Debug.Log("Indice sélectionné :" + (i));
-                        for (int n=0; n<usedUpgrades.Count; n++){
-                            for (int m=0; m<upgrades.Count; m++){
-                                if (usedUpgrades[n].id != upgrades[m].id){
-                                    return i;
-                                } else {
-                                    Debug.Log("Doublon détécté");
+                            for (int j=0; j<listId.Count; j++){
+                                if (listId[j] == i){
+                                    isDoublon = true;
                                 }
                             }
-                        }
-                        //return i;
+                            if (isDoublon == false){
+                            listId.Add(i);
+                            //isDoublon = false;
+                            return i;
+                            } else {
+                                isDoublon = false;
+                                nombreRandom = Random.Range(0, 100);
+                                i = 0;
+                            }
                     }
                     i+=1;
                 }
