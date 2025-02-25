@@ -26,7 +26,7 @@ public class UpgradesScript : MonoBehaviour
     // spriteRenderer.sprite = newSprite;
     public static bool isUpgrading = false;
     public CanvasGroup UpUI;
-    public  GameObject mainCharacter;
+    public GameObject mainCharacter;
     public GameObject bouton;
     public TextMeshProUGUI Upgrade1Text;
     public TextMeshProUGUI Upgrade2Text;
@@ -35,6 +35,7 @@ public class UpgradesScript : MonoBehaviour
     public Upgrade upgrade1;
     public Upgrade upgrade2;
     public Upgrade upgrade3;
+    public string rareteTemp;
     public string textChose;
     public int idChose;
     public TextMeshProUGUI descriptionText1;
@@ -79,13 +80,17 @@ public class UpgradesScript : MonoBehaviour
             this.descriptif = descriptif;
         }   
     }
-    public List<int> listId = new List<int>{};
-    public List<Upgrade> upgrades= new List<Upgrade>{
-        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
-        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
-        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
-        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
-        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
+    public class Rarety {
+        public string nom;
+        public int proba;
+        public Rarety(string nom, int proba){
+            this.nom = nom;
+            this.proba = proba;
+        }
+    }
+    public List<int> listeId = new List<int>{};
+    public List<Upgrade> upgrades= new List<Upgrade>{};
+    public List<Rarety> listeProbaUpgrades = new List<Rarety>{};
 
     void Start()
     {
@@ -97,7 +102,11 @@ public class UpgradesScript : MonoBehaviour
         new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
         new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
         new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
-
+        listeProbaUpgrades = new List<Rarety>{
+        new Rarety("Vert", 65),
+        new Rarety("Bleu", 20),
+        new Rarety("Violet", 10),
+        new Rarety("Légendaire", 5)};
     }
 
     // Update is called once per frame
@@ -111,7 +120,8 @@ public class UpgradesScript : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collider){
         if (collider.gameObject.tag == "Player"){
-            hideUpgrade();
+            SelectRandomUpgrade();
+            //hideUpgrade();
             mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             isUpgrading = true;
             //Destroy(gameObject);
@@ -247,7 +257,42 @@ public class UpgradesScript : MonoBehaviour
         upgrades[upgrades.Length - 1] = new upgrade("Augmentation du Mana max", 6, 40, "Augmente les points de mana maximum du joueur");*/
     }
     void SelectRandomUpgrade(){
-        // Code
+        nombreRandom = Random.Range(0, 100);
+        Debug.Log("Nombre random :" + nombreRandom);
+        // Code en dur
+        /*
+        if (nombreRandom <= 65){
+            spriteRenderer.sprite = greenUpgrade;
+        } else if (nombreRandom <= 85){
+            spriteRenderer.sprite = blueUpgrade;
+        } else if (nombreRandom <= 95){
+            spriteRenderer.sprite = violetUpgrade;
+        } else {
+            spriteRenderer.sprite = legUpgrade;
+        }
+        */
+        // Code adaptatif
+        for (int i=0; i<listeProbaUpgrades.Count; i++){
+            nombreRandom -= listeProbaUpgrades[i].proba;
+            if(nombreRandom <= 0){
+                rareteTemp= listeProbaUpgrades[i].nom;
+            }
+        }
+        Debug.Log("Rareté : " + rareteTemp);
+        switch (rareteTemp){
+            case "Vert":
+                spriteRenderer.sprite = greenUpgrade;
+                break;
+            case "Bleu":
+                spriteRenderer.sprite = blueUpgrade;
+                break;
+            case "Violet":
+                spriteRenderer.sprite = violetUpgrade;
+                break;
+            case "Légendaire":
+                spriteRenderer.sprite = legUpgrade;
+                break;
+        }
     }
     int SelectUpgrade(List<Upgrade> upgrade){
         int i = 0;
@@ -261,13 +306,13 @@ public class UpgradesScript : MonoBehaviour
                     nombreRandom -= upgrade[i].proba;
                     if(nombreRandom <= 0){
                         //Debug.Log("Indice sélectionné :" + (i));
-                            for (int j=0; j<listId.Count; j++){
-                                if (listId[j] == i){
+                            for (int j=0; j<listeId.Count; j++){
+                                if (listeId[j] == i){
                                     isDoublon = true;
                                 }
                             }
                             if (isDoublon == false){
-                            listId.Add(i);
+                            listeId.Add(i);
                             //isDoublon = false;
                             return i;
                             } else {
