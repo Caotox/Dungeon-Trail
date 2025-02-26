@@ -44,9 +44,11 @@ public class UpgradesScript : MonoBehaviour
     public string descriptionTemp;
     public string nomUpgradeRandom;
     public int nombreRandom;
+    public int nombreRandom2;
     public int probaTemp;
     public int idTemp;
     public int indiceTemp;
+    public List<Upgrade> upgradeToChose;
 
     /*
     public Dictionary<int, string> playerUpgrades = new Dictionary<int, string>()
@@ -89,14 +91,20 @@ public class UpgradesScript : MonoBehaviour
         }
     }
     public List<int> listeId = new List<int>{};
-    public List<Upgrade> upgrades= new List<Upgrade>{};
+    public List<Upgrade> upgradeGreen= new List<Upgrade>{};
+    public List<Upgrade> upgradeBlue = new List<Upgrade>{};
+    public List<Upgrade> upgradeViolet = new List<Upgrade>{};
+    public List<Upgrade> upgradeLeg = new List<Upgrade>{};
+    public List<Upgrade> upgradeSword = new List<Upgrade>{};
+    public List<Upgrade> upgradeArrow = new List<Upgrade>{};
+    public List<Upgrade> upgradeStaff = new List<Upgrade>{};
     public List<Rarety> listeProbaUpgrades = new List<Rarety>{};
 
     void Start()
     {
         //nombreRandom = Random.Range(0, 100);
         UpUI.alpha = 0;
-        upgrades= new List<Upgrade>{
+        upgradeGreen= new List<Upgrade>{
         new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
         new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
         new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
@@ -104,11 +112,49 @@ public class UpgradesScript : MonoBehaviour
         new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
         listeProbaUpgrades = new List<Rarety>{
         new Rarety("Vert", 65),
-        new Rarety("Bleu", 20),
-        new Rarety("Violet", 10),
-        new Rarety("Légendaire", 5)};
+        new Rarety("Bleu", 25),
+        new Rarety("Violet", 5),
+        new Rarety("Légendaire", 2),
+        new Rarety("Sword", 1),
+        new Rarety("Arc", 1),
+        new Rarety("Spell", 1)};
+        upgradeBlue= new List<Upgrade>{
+        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
+        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
+        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
+        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
+        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
+        upgradeViolet= new List<Upgrade>{
+        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
+        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
+        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
+        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
+        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
+        upgradeLeg= new List<Upgrade>{
+        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
+        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
+        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
+        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
+        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
+        upgradeArrow= new List<Upgrade>{
+        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
+        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
+        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
+        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
+        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
+        upgradeSword= new List<Upgrade>{
+        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
+        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
+        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
+        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
+        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
+        upgradeStaff= new List<Upgrade>{
+        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
+        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
+        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
+        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
+        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -120,16 +166,17 @@ public class UpgradesScript : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collider){
         if (collider.gameObject.tag == "Player"){
-            SelectRandomUpgrade();
+            rareteTemp = SelectRandomRarete();
+            ActiveRareteUpgrade(rareteTemp);
             //hideUpgrade();
             mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             isUpgrading = true;
             //Destroy(gameObject);
             //upgradeTemp = ActiveUpgrade(upgrades);
             ShowUpgradeMenu();
-            upgrade1 = ActiveUpgrade(upgrades);
-            upgrade2 = ActiveUpgrade(upgrades);
-            upgrade3 = ActiveUpgrade(upgrades);
+            upgrade1 = ActiveUpgrade(upgradeGreen);
+            upgrade2 = ActiveUpgrade(upgradeGreen);
+            upgrade3 = ActiveUpgrade(upgradeGreen);
             Upgrade1Text.text = upgrade1.nom;
             Upgrade2Text.text = upgrade2.nom;
             Upgrade3Text.text = upgrade3.nom;
@@ -158,23 +205,23 @@ public class UpgradesScript : MonoBehaviour
         UpUI.interactable = false;
         UpUI.blocksRaycasts = false;
     }
-    Upgrade ActiveUpgrade(List<Upgrade> upgrade){
-        indiceTemp = SelectUpgrade(upgrades);
-        for (int i=0; i<upgrades.Count; i++){
-            if (indiceTemp == upgrade[i].id){
-                upgradeTemp = upgrade[i];
+    Upgrade ActiveUpgrade(List<Upgrade> upgradeToChose){
+        indiceTemp = SelectUpgrade(upgradeToChose);
+        for (int i=0; i<upgradeToChose.Count; i++){
+            if (indiceTemp == upgradeToChose[i].id){
+                upgradeTemp = upgradeToChose[i];
             }
         }
         return upgradeTemp;
         
     }
-    int lookUpgradeByName(string name, List<Upgrade> upgrades)
+    int lookUpgradeByName(string name, List<Upgrade> upgradeToChose)
     {
-        for (int i=0; i<upgrades.Count; i++)
+        for (int i=0; i<upgradeToChose.Count; i++)
         {
-            if (name == upgrades[i].nom)
+            if (name == upgradeToChose[i].nom)
             {
-                return upgrades[i].id;
+                return upgradeToChose[i].id;
             }
         }
         return -1;
@@ -202,7 +249,7 @@ public class UpgradesScript : MonoBehaviour
     public void EffetUpgrade(GameObject bouton){
         //bouton = GameObject.FindGameObjectWithTag("Upgrades");
         textChose = bouton.GetComponentInChildren<TextMeshProUGUI>().text;
-        idChose = lookUpgradeByName(textChose, upgrades);
+        idChose = lookUpgradeByName(textChose, upgradeGreen);
         switch (idChose){
             case -1 :
                 Debug.Log("Erreur : Upgrade non trouvée");
@@ -256,54 +303,65 @@ public class UpgradesScript : MonoBehaviour
         /*Array.Resize(ref upgrades, upgrades.Length + 1);
         upgrades[upgrades.Length - 1] = new upgrade("Augmentation du Mana max", 6, 40, "Augmente les points de mana maximum du joueur");*/
     }
-    void SelectRandomUpgrade(){
+    string SelectRandomRarete(){
         nombreRandom = Random.Range(0, 100);
-        Debug.Log("Nombre random :" + nombreRandom);
-        // Code en dur
-        /*
-        if (nombreRandom <= 65){
-            spriteRenderer.sprite = greenUpgrade;
-        } else if (nombreRandom <= 85){
-            spriteRenderer.sprite = blueUpgrade;
-        } else if (nombreRandom <= 95){
-            spriteRenderer.sprite = violetUpgrade;
-        } else {
-            spriteRenderer.sprite = legUpgrade;
-        }
-        */
-        // Code adaptatif
+        //Debug.Log("Nombre random :" + nombreRandom);
         for (int i=0; i<listeProbaUpgrades.Count; i++){
             nombreRandom -= listeProbaUpgrades[i].proba;
             if(nombreRandom <= 0){
                 rareteTemp= listeProbaUpgrades[i].nom;
+                Debug.Log("Rareté : " + rareteTemp);
+                return rareteTemp;
             }
         }
-        Debug.Log("Rareté : " + rareteTemp);
-        switch (rareteTemp){
+        return "null";
+    }
+        void ActiveRareteUpgrade(string rareteTemp){
+             switch (rareteTemp){
+            case "null" :
+                Debug.Log("Erreur : Rarete non trouvée");
+                break;
             case "Vert":
                 spriteRenderer.sprite = greenUpgrade;
+                upgradeToChose = upgradeGreen;
                 break;
             case "Bleu":
                 spriteRenderer.sprite = blueUpgrade;
+                upgradeToChose = upgradeBlue;
                 break;
             case "Violet":
                 spriteRenderer.sprite = violetUpgrade;
+                upgradeToChose = upgradeViolet;
                 break;
             case "Légendaire":
                 spriteRenderer.sprite = legUpgrade;
+                upgradeToChose = upgradeLeg;
+                break;
+            case "Arc":
+                spriteRenderer.sprite = arrowUpgrade;
+                upgradeToChose = upgradeArrow;
+                break;
+            case "Spell":
+                spriteRenderer.sprite = staffUpgrade;
+                upgradeToChose = upgradeStaff;
+                break;
+            case "Sword":
+                spriteRenderer.sprite = swordUpgrade;
+                upgradeToChose = upgradeSword;
                 break;
         }
     }
-    int SelectUpgrade(List<Upgrade> upgrade){
+       
+    int SelectUpgrade(List<Upgrade> upgradeToChose){
         int i = 0;
-        int iMax = upgrade.Count;
+        int iMax = upgradeToChose.Count;
         nombreRandom = Random.Range(0, 100);
         //Debug.Log("Nombre random :" + nombreRandom);
                 while (i < iMax){
                     //Debug.Log("indice :" + i + "upgrade :" + upgrade[i].nom);
                     //idTemp = upgrades[i].id;
                     //indiceTemp = i;
-                    nombreRandom -= upgrade[i].proba;
+                    nombreRandom -= upgradeToChose[i].proba;
                     if(nombreRandom <= 0){
                         //Debug.Log("Indice sélectionné :" + (i));
                             for (int j=0; j<listeId.Count; j++){
