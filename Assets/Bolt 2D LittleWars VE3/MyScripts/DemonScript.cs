@@ -5,6 +5,11 @@ using UnityEngine;
 public class DemonScript : MonoBehaviour
 {
     public GameObject demonCharacter;
+    public bool isDead = false;
+    public bool hasCreated = false;
+    public bool hasDropped = false;
+    public bool hasGenerated = false;
+    public int randomNumber;
     public float currenthP;
     public float xposition;
     public float yposition;
@@ -18,6 +23,7 @@ public class DemonScript : MonoBehaviour
     public Transform mainCharTransform;
     public float timerStop = 3f;
     public float timerStop2 = 1.5f;
+    public GameObject upgrade;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +33,7 @@ public class DemonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (UpgradesScript.isUpgrading == false){
+        if (UpgradesScript.isUpgrading == false && isDead == false){
         if (timer <= 0){
             if (fireDirection == "right")
                 Instantiate(enemy_fireball, new Vector2(transform.position.x+1, transform .position.y), transform.rotation);
@@ -84,7 +90,7 @@ public class DemonScript : MonoBehaviour
     }
     void Deplacement()
     {
-        if (UpgradesScript.isUpgrading == false){
+        if (UpgradesScript.isUpgrading == false && isDead == false){
         if (fireDirection == "right"){
             if (xposition - transform.position.x > 8){ // avancer
                 demonRigid.velocity = Vector2.right * 3;
@@ -124,8 +130,21 @@ public class DemonScript : MonoBehaviour
     void Death(){
         if (currenthP <= 0)
             {
-                Destroy(gameObject);
+                isDead = true;
+                //Destroy(gameObject);
+                //Instantiate(upgrade, new Vector2(transform.position.x, transform.position.y), transform.rotation);
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 //Instantiate(this.gameObject, new Vector2(6, -1.823f), transform.rotation);
+                if (hasGenerated == false){
+                    randomNumber = Random.Range(1, 4);
+                    hasGenerated = true;
+                }
+                //Debug.Log(randomNumber);
+                if (randomNumber == 1 && hasCreated == false){
+                    Instantiate(upgrade, new Vector2(transform.position.x, transform.position.y), transform.rotation);
+                    hasCreated = true;
             }
     }
+}
 }

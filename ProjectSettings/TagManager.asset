@@ -8,7 +8,6 @@ TagManager:
   - DemonFireBall
   - MCFleche
   - MCSpell
-  - Upgrades
   layers:
   - Default
   - TransparentFX

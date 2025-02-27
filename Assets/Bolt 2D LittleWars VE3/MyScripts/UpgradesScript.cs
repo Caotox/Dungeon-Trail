@@ -91,26 +91,49 @@ public class UpgradesScript : MonoBehaviour
         }
     }
     public List<int> listeId = new List<int>{};
-    public List<Upgrade> upgradeGreen= new List<Upgrade>{};
-    public List<Upgrade> upgradeBlue = new List<Upgrade>{};
-    public List<Upgrade> upgradeViolet = new List<Upgrade>{};
-    public List<Upgrade> upgradeLeg = new List<Upgrade>{};
-    public List<Upgrade> upgradeSword = new List<Upgrade>{};
-    public List<Upgrade> upgradeArrow = new List<Upgrade>{};
-    public List<Upgrade> upgradeStaff = new List<Upgrade>{};
-    public List<Rarety> listeProbaUpgrades = new List<Rarety>{};
-
-    void Start()
-    {
-        //nombreRandom = Random.Range(0, 100);
-        UpUI.alpha = 0;
-        upgradeGreen= new List<Upgrade>{
+    public List<Upgrade> upgradeGreen= new List<Upgrade>{
         new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
         new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
         new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
         new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
         new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
-        listeProbaUpgrades = new List<Rarety>{
+    public List<Upgrade> upgradeBlue= new List<Upgrade>{
+        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
+        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
+        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
+        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
+        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
+    public List<Upgrade> upgradeViolet= new List<Upgrade>{
+        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
+        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
+        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
+        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
+        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
+    public List<Upgrade> upgradeLeg= new List<Upgrade>{
+        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
+        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
+        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
+        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
+        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
+    public List<Upgrade> upgradeSword= new List<Upgrade>{
+        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
+        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
+        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
+        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
+        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
+    public List<Upgrade> upgradeArrow= new List<Upgrade>{
+        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
+        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
+        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
+        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
+        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
+    public List<Upgrade> upgradeStaff= new List<Upgrade>{
+        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
+        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
+        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
+        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
+        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
+    public List<Rarety> listeProbaUpgrades = new List<Rarety>{
         new Rarety("Vert", 65),
         new Rarety("Bleu", 25),
         new Rarety("Violet", 5),
@@ -118,47 +141,35 @@ public class UpgradesScript : MonoBehaviour
         new Rarety("Sword", 1),
         new Rarety("Arc", 1),
         new Rarety("Spell", 1)};
-        upgradeBlue= new List<Upgrade>{
-        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
-        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
-        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
-        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
-        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
-        upgradeViolet= new List<Upgrade>{
-        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
-        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
-        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
-        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
-        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
-        upgradeLeg= new List<Upgrade>{
-        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
-        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
-        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
-        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
-        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
-        upgradeArrow= new List<Upgrade>{
-        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
-        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
-        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
-        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
-        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
-        upgradeSword= new List<Upgrade>{
-        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
-        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
-        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
-        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
-        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
-        upgradeStaff= new List<Upgrade>{
-        new Upgrade("Amélioration de la vitesse", 0, 20, "Augmente la vitesse du joueur"),
-        new Upgrade("Amélioration de la hauteur du saut", 1, 20, "Augmente la hauteur du saut du joueur"),
-        new Upgrade("Tu peux spam les flèches frérot", 2, 5, "Permet de spam les flèches"),
-        new Upgrade("Tu peux spam les spells", 3, 5, "Permet de spam les spells"),
-        new Upgrade("Augmentation de l'attaque", 4, 50, "Augmente l'attaque du joueur")};
+
+    void Start()
+    {
+        InstantitateObjects();
+        //UpUI.alpha = 0;
+        InstantiateUpgrade();
     }
     // Update is called once per frame
     void Update()
     {
         
+    }
+    void InstantiateUpgrade(){
+        rareteTemp = SelectRandomRarete();
+        ActiveRareteUpgrade(rareteTemp);
+    }
+    void InstantitateObjects(){
+        UpUI=GameObject.Find("Upgrades Canva").GetComponent<CanvasGroup>();
+        button1 = UpUI.transform.Find("Upgrade1Gen/Upgrade1")?.gameObject;
+        button2 = UpUI.transform.Find("Upgrade2Gen/Upgrade2")?.gameObject;
+        button3 = UpUI.transform.Find("Upgrade3Gen/Upgrade3")?.gameObject;
+        Upgrade1Text = UpUI.transform.Find("Upgrade1Gen/Upgrade1/TextUpgrade1")?.GetComponent<TextMeshProUGUI>();
+        Upgrade2Text = UpUI.transform.Find("Upgrade2Gen/Upgrade2/TextUpgrade2")?.GetComponent<TextMeshProUGUI>();
+        Upgrade3Text = UpUI.transform.Find("Upgrade3Gen/Upgrade3/TextUpgrade3")?.GetComponent<TextMeshProUGUI>();
+        descriptionText1 = UpUI.transform.Find("Upgrade1Gen/Description1")?.GetComponent<TextMeshProUGUI>();
+        descriptionText2 = UpUI.transform.Find("Upgrade2Gen/Description2")?.GetComponent<TextMeshProUGUI>();
+        descriptionText3 = UpUI.transform.Find("Upgrade3Gen/Description3")?.GetComponent<TextMeshProUGUI>();
+        mainCharacter = GameObject.FindGameObjectWithTag("Player");
+
     }
     void hideUpgrade(){
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -166,8 +177,6 @@ public class UpgradesScript : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collider){
         if (collider.gameObject.tag == "Player"){
-            rareteTemp = SelectRandomRarete();
-            ActiveRareteUpgrade(rareteTemp);
             //hideUpgrade();
             mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             isUpgrading = true;
@@ -212,11 +221,13 @@ public class UpgradesScript : MonoBehaviour
                 upgradeTemp = upgradeToChose[i];
             }
         }
-        return upgradeTemp;
-        
+        return upgradeTemp;   
     }
     int lookUpgradeByName(string name, List<Upgrade> upgradeToChose)
     {
+        Debug.Log(upgradeGreen.Count);
+        upgradeToChose = upgradeGreen;
+        Debug.Log(upgradeToChose.Count);
         for (int i=0; i<upgradeToChose.Count; i++)
         {
             if (name == upgradeToChose[i].nom)
@@ -250,6 +261,7 @@ public class UpgradesScript : MonoBehaviour
         //bouton = GameObject.FindGameObjectWithTag("Upgrades");
         textChose = bouton.GetComponentInChildren<TextMeshProUGUI>().text;
         idChose = lookUpgradeByName(textChose, upgradeGreen);
+        Debug.Log(idChose);
         switch (idChose){
             case -1 :
                 Debug.Log("Erreur : Upgrade non trouvée");
