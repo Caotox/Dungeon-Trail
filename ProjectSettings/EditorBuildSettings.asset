@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Bolt 2D LittleWars VE3/Scenes/Main.unity
+    path: Assets/Scenes/Main.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Bolt 2D LittleWars VE3/Scenes/Menu.unity
+    path: Assets/Scenes/Menu.unity
     guid: 01dca2add2a28f8418c9cae8d3080e9e
   m_configObjects: {}

@@ -11,6 +11,7 @@ public class MainCharacterScript : MonoBehaviour
     //public GameObject sword;
     //public KeyCode attackKey;
     public bool canGrip = true;
+    public string direction;
     public float timerDeath = 3;
     public float timerGrip = 0;
     public bool isDead = false;
@@ -44,6 +45,8 @@ public class MainCharacterScript : MonoBehaviour
     public bool isPlateformeLeft = false;
     public bool isPlateformeRight = false;
     public float attackRange = 1.3f;
+    public int nombreFleches = 3;
+    public float timerRecupFleches = 5f;
     
     // Start is called before the first frame update
     void Start()
@@ -64,6 +67,7 @@ public class MainCharacterScript : MonoBehaviour
         Timers();
         Death();
         GripWall();
+        //GetDirectionShoot();
     }
     private void OnCollisionEnter2D(Collision2D collision){
         if (collision.gameObject.layer == 3){
@@ -111,6 +115,11 @@ public class MainCharacterScript : MonoBehaviour
             moveDirection = moveDirection + Vector2.right * speed;
         }
         }
+        /*
+        if (Input.GetKey(KeyCode.S)){
+            mainCharacter.velocity += Vector2.down * 0.05f;  
+        }
+        */
         mainCharacter.velocity = new Vector2(moveDirection.x, mainCharacter.velocity.y);
         if (Input.GetKeyDown(KeyCode.W) && (nombreDeSauts < nombreDeSautsMax)){
             canGrip = false;
@@ -134,10 +143,44 @@ public class MainCharacterScript : MonoBehaviour
         mainCharacter.transform.localScale = new Vector3(scale.x, scale.y, scale.z);
 
     }
+    void GetDirectionShoot(){
+        if (Input.GetKey(KeyCode.S)){
+                direction = "bas";
+                // Code lancer bas
+            }
+            else if (Input.GetKey(KeyCode.W)){
+                direction = "haut";
+            }
+            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D)){
+                direction = "diagoDroiteHaut";
+                // Code diagonale haut droite 
+            }
+            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D)){
+                direction = "diagoDroiteBas";
+                // Code diagonale bas droite
+            }
+            else if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W)){
+                direction = "diagoHautGauche";
+                // Code diagonale haut gauche
+            }
+            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A)){
+                direction = "diagoBasGauche";
+                // Code diagonale bas gauche
+            }
+            else if (Input.GetKey(KeyCode.D)){
+                direction = "droite";
+                // Code lancer droite
+            }
+            else if (Input.GetKey(KeyCode.A)){
+                direction = "gauche";
+                // Code lancer gauche
+            }
+    }
     void CharacterAction(){
         if (UpgradesScript.isUpgrading == false){
         if (Input.GetKeyDown(KeyCode.U)){
             if (canStaff){
+            GetDirectionShoot();
             animator.SetTrigger("isStaffing");
             //staff.SetActive(true);
             //bow.SetActive(false);
@@ -149,6 +192,7 @@ public class MainCharacterScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Y)){
             if (canArrow){
+            GetDirectionShoot();
             animator.SetTrigger("isBowing");
             //bow.SetActive(true);
             //staff.SetActive(false);
@@ -160,6 +204,7 @@ public class MainCharacterScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.I)){
             if (canEpee){
+            GetDirectionShoot();
             canEpee = false;
             timerEpee = timerEpeeMax;
             animator.SetTrigger("isAttacking");
@@ -234,6 +279,7 @@ public class MainCharacterScript : MonoBehaviour
         else{
             timerEpee -= Time.deltaTime;
         }
+
     }
     void Death(){
     if (currenthP <= 0){
