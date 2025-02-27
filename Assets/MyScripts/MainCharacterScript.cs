@@ -22,7 +22,7 @@ public class MainCharacterScript : MonoBehaviour
     public GameObject fireBall;
     public Rigidbody2D mainCharacter;
     public float speed = 7.0f;
-    public float jumpForce = 10.0f;
+    public float jumpForce = 15.0f;
     public float offSet;
     public float horizontalMove;    
     public float currenthP;

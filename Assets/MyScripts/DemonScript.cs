@@ -28,6 +28,8 @@ public class DemonScript : MonoBehaviour
     void Start()
     {
         currenthP = maxHP;
+        mainCharacter = GameObject.FindGameObjectWithTag("Player");
+        mainCharTransform = mainCharacter.GetComponent<Transform>();
     }
 
     // Update is called once per frame

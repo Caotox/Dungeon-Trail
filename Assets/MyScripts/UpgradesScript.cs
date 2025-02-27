@@ -309,6 +309,7 @@ public class UpgradesScript : MonoBehaviour
                 // effet
                 break;
         }
+        Destroy(gameObject);
     }
     void AddUpgrade(List<Upgrade> upgrade, string nom, int id, int proba, string descriptif){
         upgrade.Add(new Upgrade(nom, id, proba, descriptif));
