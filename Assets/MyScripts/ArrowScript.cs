@@ -9,9 +9,11 @@ public class ArrowScript : MonoBehaviour
     public Rigidbody2D arrow;
     public float direction;
     public float compteurBoostVitesse = 2f;
+    public float compteurDestroy = 15f;
     public bool hasShot = false;
     public bool hasBuff = false;
-    public bool isTouched = false;
+    //public bool isFar = false;
+    public float compteurDestroy = 15f;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,76 @@ public class ArrowScript : MonoBehaviour
         directionShoot = mainCharacter.GetComponent<MainCharacterScript>().direction;
         Debug.Log(directionShoot);
         float direction = Mathf.Sign(mainCharacter.transform.localScale.x);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        BoostVitesse();
+        Shoot();
+        DestroyWhenFar();
+
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 6)
+        {
+            Debug.Log("Hit Ennemi");
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.layer == 7){
+            Debug.Log("Hit Wall");
+            Destroy(gameObject);
+        }
+    }
+    void enableGameObject(){
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        if (compteurDestroy > 0){
+            compteurDestroy-=Time.deltaTime;
+        } else if (compteurDestroy < 0){
+            Destroy(gameObject);
+            Debug.Log("destroyed");
+        }
+    }
+    void BoostVitesse(){
+        if (hasShot == true && hasBuff == false){
+            mainCharacter.GetComponent<MainCharacterScript>().speed += 10;
+            hasBuff = true;
+        }
+        if (compteurBoostVitesse>0 && hasShot == true){
+            compteurBoostVitesse-=Time.deltaTime;
+            Debug.Log(compteurBoostVitesse);
+        } else if (compteurBoostVitesse < 0 && hasShot == true){
+            mainCharacter.GetComponent<MainCharacterScript>().speed -= 10;
+            hasShot = false;
+        }
+        }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 6)
+        {
+            Debug.Log("Hit Ennemy");
+            //Destroy(gameObject);
+            enableGameObject();
+        }
+        if (collision.gameObject.tag == "DemonFireBall")
+        {
+            //Destroy(gameObject);
+            enableGameObject();
+        }
+        if (collision.gameObject.layer == 7){
+            Debug.Log("Hit Wall");
+            //Destroy(gameObject);
+            enableGameObject();
+        }
+        if (collision.gameObject.layer == 3){
+            Debug.Log("Hit Ground");
+            //Destroy(gameObject);
+            enableGameObject();
+        }
+    }
+    void Shoot(){
         if (direction == 1)
         {
             transform.localScale = new Vector3(1*transform.localScale.x, transform.localScale.y, transform.localScale.z);
@@ -76,72 +148,12 @@ public class ArrowScript : MonoBehaviour
             hasBuff = false;
         }
         //arrow.velocity = new Vector2(15 * direction, 0);
-
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.Log(mainCharacter.GetComponent<MainCharacterScript>().speed);
+    void DestroyWhenFar(){
         if (transform.position.x >= mainCharacter.transform.position.x + 20){
             Debug.Log("Arrow destroyed");
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            enableGameObject();
         }
-        //BoostVitesse();
-
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        isTouched = true;
-        if (collision.gameObject.layer == 6)
-        {
-            Debug.Log("Hit Ennemi");
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.layer == 7){
-            Debug.Log("Hit Wall");
-            Destroy(gameObject);
-        }
-    }
-    void BoostVitesse(){
-        if (isTouched = true && hasBuff == true){
-            mainCharacter.GetComponent<MainCharacterScript>().speed -= 10;
-            hasBuff = false;
-        }
-        if (hasShot == true && hasBuff == false){
-            mainCharacter.GetComponent<MainCharacterScript>().speed += 10;
-            hasBuff = true;
-        }
-        if (compteurBoostVitesse>0 && hasShot == true){
-            compteurBoostVitesse-=Time.deltaTime;
-            Debug.Log(compteurBoostVitesse);
-        } else if (compteurBoostVitesse < 0 && hasShot == true){
-            mainCharacter.GetComponent<MainCharacterScript>().speed -= 10;
-            hasShot = false;
-        }
-        }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        isTouched = true;
-        if (collision.gameObject.layer == 6)
-        {
-            Debug.Log("Hit Ennemy");
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.tag == "DemonFireBall")
-        {
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.layer == 7){
-            Debug.Log("Hit Wall");
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.layer == 3){
-            Debug.Log("Hit Ground");
-            Destroy(gameObject);
-        }
-    }
-    void UpdateVelocity(){
-        //switch (direction)
     }
 }

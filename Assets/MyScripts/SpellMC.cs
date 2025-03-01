@@ -9,14 +9,80 @@ public class FireBall : MonoBehaviour
     public Rigidbody2D fireBall;
     public float direction = 1;
     public float puissanceDash = 2f;
+    //public bool isFar = false;
+    public float compteurDestroy = 15f;
 
     // Start is called before the first frame update
     void Start()
     {
         mainCharacter = GameObject.FindGameObjectWithTag("Player");
         directionShoot = mainCharacter.GetComponent<MainCharacterScript>().direction;
-        Debug.Log(directionShoot);
+        //Debug.Log(directionShoot);
         float direction = Mathf.Sign(mainCharacter.transform.localScale.x);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Shoot();
+        DestroyWhenFar();
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 6)
+        {
+            Debug.Log("Hit Ennemi");
+            //Destroy(gameObject);
+            enableGameObject();
+        }
+        if (collision.gameObject.tag == "DemonFireBall")
+        {
+            Debug.Log("Hit Object");
+            //Destroy(gameObject);
+            enableGameObject();
+        }
+        if (collision.gameObject.layer == 7){
+            Debug.Log("Hit Wall");
+            //Destroy(gameObject);
+            enableGameObject();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 6)
+        {
+            Debug.Log("Hit Ennemy");
+            //Destroy(gameObject);
+            enableGameObject();
+        }
+        if (collision.gameObject.tag == "DemonFireBall")
+        {
+            Debug.Log("Hit Object");
+            //Destroy(gameObject);
+            enableGameObject();
+        }
+        if (collision.gameObject.layer == 7){
+            Debug.Log("Hit Wall");
+            //Destroy(gameObject);
+            enableGameObject();
+        }
+        if (collision.gameObject.layer == 3){
+            Debug.Log("Hit Ground");
+           //Destroy(gameObject);
+           enableGameObject();
+        }
+    }
+    void enableGameObject(){
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        if (compteurDestroy > 0){
+            compteurDestroy-=Time.deltaTime;
+        } else if (compteurDestroy < 0){
+            Destroy(gameObject);
+            Debug.Log("destroyed");
+        }
+    }
+    void Shoot(){
         if (direction == 1)
         {
             transform.localScale = new Vector3(1*transform.localScale.x, transform.localScale.y, transform.localScale.z);
@@ -60,54 +126,14 @@ public class FireBall : MonoBehaviour
         //fireBall.velocity = new Vector2(8 * direction, 0);
         */
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (transform.position.x >= mainCharacter.transform.position.x + 20){
-            Debug.Log("FireBall destroyed");
-            Destroy(gameObject);
-        }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == 6)
-        {
-            Debug.Log("Hit Ennemi");
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.tag == "DemonFireBall")
-        {
-            Debug.Log("Hit Object");
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.layer == 7){
-            Debug.Log("Hit Wall");
-            Destroy(gameObject);
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == 6)
-        {
-            Debug.Log("Hit Ennemy");
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.tag == "DemonFireBall")
-        {
-            Debug.Log("Hit Object");
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.layer == 7){
-            Debug.Log("Hit Wall");
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.layer == 3){
-            Debug.Log("Hit Ground");
-            Destroy(gameObject);
-        }
-    }
     void DashArriere(){
         // code
+    }
+    void DestroyWhenFar(){
+        if (transform.position.x >= mainCharacter.transform.position.x + 20){
+            Debug.Log("FireBall destroyed");
+            //Destroy(gameObject);
+            enableGameObject();
+        }
     }
 }

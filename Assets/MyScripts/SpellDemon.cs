@@ -8,11 +8,55 @@ public class FireCast : MonoBehaviour
     public GameObject demon;
     public DemonScript demonScript;
     public string fireDirection;
+    //public bool isFar = false;
+    public float compteurDestroy = 15f;
+
     // Start is called before the first frame update
     void Start()
     {
         demon = GameObject.FindGameObjectWithTag("Demon");
         demonScript = GameObject.FindGameObjectWithTag("Demon").GetComponent<DemonScript>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {   
+        Shoot();
+        DestroyWhenFar();
+    }
+    void FixedUpdate(){
+        //Debug.Log(demonScript.currenthP);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "MCFleche")
+        {
+            //Debug.Log("Hit Fleche");
+        } else if (collision.gameObject.tag == "MCSpell"){
+            //Destroy(gameObject);
+            enableGameObject();
+            //Debug.Log("FireBall destroyed onCollision");
+        }
+        else if (collision.gameObject.tag == "Player"){
+            //Destroy(gameObject);
+            enableGameObject();
+        } else if (collision.gameObject.tag == "Demon"){
+            //Destroy(gameObject);
+            enableGameObject();
+        }
+
+    }
+    void enableGameObject(){
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        if (compteurDestroy > 0){
+            compteurDestroy-=Time.deltaTime;
+        } else if (compteurDestroy < 0){
+            Destroy(gameObject);
+            Debug.Log("destroyed");
+        }
+    }
+    void Shoot(){
         if (demon != null){
         fireDirection = demon.GetComponent<DemonScript>().fireDirection;
         if (fireDirection == "right"){
@@ -24,33 +68,12 @@ public class FireCast : MonoBehaviour
         }
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {   
+    void DestroyWhenFar(){
         if (transform.position.x <= demon.transform.position.x - 40 && demon != null)
         {
             //Debug.Log("FireBall destroyed");
-            Destroy(gameObject);
-        }
-    }
-    void FixedUpdate(){
-        //Debug.Log(demonScript.currenthP);
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "MCFleche")
-        {
-            //Debug.Log("Hit Fleche");
-        } else if (collision.gameObject.tag == "MCSpell"){
-            Destroy(gameObject);
-            //Debug.Log("FireBall destroyed onCollision");
-        }
-        else if (collision.gameObject.tag == "Player"){
-            Destroy(gameObject);
-        } else if (collision.gameObject.tag == "Demon"){
             //Destroy(gameObject);
+            enableGameObject();
         }
-
     }
 }

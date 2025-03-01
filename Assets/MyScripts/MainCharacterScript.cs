@@ -143,6 +143,14 @@ public class MainCharacterScript : MonoBehaviour
         mainCharacter.transform.localScale = new Vector3(scale.x, scale.y, scale.z);
 
     }
+    void enableGameObject(){
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        mainCharacter.simulated = false;
+        isDead = true;
+        mainCharacter.velocity = Vector2.zero; 
+        mainCharacter.gravityScale = 0;
+    }
     void GetDirectionShoot(){
         if (Input.GetKey(KeyCode.S)){
                 direction = "bas";
@@ -283,14 +291,9 @@ public class MainCharacterScript : MonoBehaviour
     }
     void Death(){
     if (currenthP <= 0){
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<BoxCollider2D>().enabled = false;
-        mainCharacter.simulated = false;
-        isDead = true;
+        enableGameObject();
     }
     if (isDead){
-        mainCharacter.velocity = Vector2.zero; 
-        mainCharacter.gravityScale = 0;
         //Debug.Log("You are dead" + timerDeath);
         if (timerDeath <= 0){
             SceneManager.LoadScene("Menu");

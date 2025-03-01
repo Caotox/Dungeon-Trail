@@ -1,4 +1,3 @@
-# ajouter possibilité de tiret en bas en haut et en diagonale
 # implémenter boost de vitesse fleches, dash boule de feu (look events)
 # changer sprites et ajouter sprite hurt mc et ennemi
 # ajouter un compteur de magie et de fleches
@@ -9,4 +8,5 @@
 # se renseigner sur la génération aléatoire de salles
 # créer d'autres salles
 # créer d'autres ennemis
-# améliorer le code dans update et start des fleches et spell
+# faire en sorte que les boules de feu blessent le démon si elles sont renvoyées
+# implémenter 3 flèches + chargement des flèches

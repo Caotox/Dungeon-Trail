@@ -35,23 +35,11 @@ public class DemonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (UpgradesScript.isUpgrading == false && isDead == false){
-        if (timer <= 0){
-            if (fireDirection == "right")
-                Instantiate(enemy_fireball, new Vector2(transform.position.x+1, transform .position.y), transform.rotation);
-            else {
-                Instantiate(enemy_fireball, new Vector2(transform.position.x-1, transform .position.y), transform.rotation);
-                }
-            timer = 4f;
-        }
-        else{
-            timer -= Time.deltaTime;
-        }
-    }
         Death();
         FlipCharacter();
         GetPositions();
         Deplacement();
+        Shoot();
     }
     void FixedUpdate(){
         StopRegu();
@@ -129,15 +117,15 @@ public class DemonScript : MonoBehaviour
             Deplacement();
         }
     }
+    void enableGameObject(){
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        isDead = true;
+    }
     void Death(){
         if (currenthP <= 0)
             {
-                isDead = true;
-                //Destroy(gameObject);
-                //Instantiate(upgrade, new Vector2(transform.position.x, transform.position.y), transform.rotation);
-                gameObject.GetComponent<SpriteRenderer>().enabled = false;
-                gameObject.GetComponent<BoxCollider2D>().enabled = false;
-                //Instantiate(this.gameObject, new Vector2(6, -1.823f), transform.rotation);
+                enableGameObject();
                 if (hasGenerated == false){
                     randomNumber = Random.Range(1, 4);
                     hasGenerated = true;
@@ -148,5 +136,20 @@ public class DemonScript : MonoBehaviour
                     hasCreated = true;
             }
     }
-}
+    }
+    void Shoot(){
+        if (UpgradesScript.isUpgrading == false && isDead == false){
+        if (timer <= 0){
+            if (fireDirection == "right")
+                Instantiate(enemy_fireball, new Vector2(transform.position.x+1, transform .position.y), transform.rotation);
+            else {
+                Instantiate(enemy_fireball, new Vector2(transform.position.x-1, transform .position.y), transform.rotation);
+                }
+            timer = 4f;
+        }
+        else{
+            timer -= Time.deltaTime;
+        }
+    }
+    }
 }
