@@ -8,9 +8,11 @@ public class FireBall : MonoBehaviour
     public string directionShoot;
     public Rigidbody2D fireBall;
     public float direction = 1;
-    public float puissanceDash = 8f;
+    public float puissanceDash = 2f;
     //public bool isFar = false;
     public float compteurDestroy = 15f;
+    public float compteurDash = 1f;
+    public bool isDashing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -18,14 +20,16 @@ public class FireBall : MonoBehaviour
         mainCharacter = GameObject.FindGameObjectWithTag("Player");
         directionShoot = mainCharacter.GetComponent<MainCharacterScript>().direction;
         direction = Mathf.Sign(mainCharacter.transform.localScale.x);
+        isDashing = true;
         Shoot();
-        DashArriere();
+        //DashArriere();
     }
 
     // Update is called once per frame
     void Update()
     {
         DestroyWhenFar();
+        DashArriere();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -129,12 +133,25 @@ public class FireBall : MonoBehaviour
     }
     void DashArriere()
     {
+        if (isDashing){
+            Debug.Log("dash");
+            if (compteurDash > 0){
+                mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(-5, 0) * puissanceDash;
+                compteurDash -= Time.deltaTime;
+            } else if (compteurDash <= 0){
+                Debug.Log("dash not");
+                isDashing = false;
+                compteurDash = 1f;
+                mainCharacter.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+        }
         // code 
+    }
     }
 
     void DestroyWhenFar(){
         if (transform.position.x >= mainCharacter.transform.position.x + 20){
-            Debug.Log("FireBall destroyed");
+            //Debug.Log("FireBall destroyed");
             //Destroy(gameObject);
             enableGameObject();
         }

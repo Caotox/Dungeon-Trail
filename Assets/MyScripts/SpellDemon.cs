@@ -21,11 +21,15 @@ public class FireCast : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {
         DestroyWhenFar();
+        getPos();
     }
     void FixedUpdate(){
         //Debug.Log(demonScript.currenthP);
+    }
+    void getPos(){
+        fireDirection = demon.GetComponent<DemonScript>().fireDirection;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -42,7 +46,7 @@ public class FireCast : MonoBehaviour
             enableGameObject();
         } else if (collision.gameObject.tag == "Demon"){
             //Destroy(gameObject);
-            enableGameObject();
+            //enableGameObject();
         }
 
     }
@@ -53,19 +57,16 @@ public class FireCast : MonoBehaviour
             compteurDestroy-=Time.deltaTime;
         } else if (compteurDestroy < 0){
             Destroy(gameObject);
-            Debug.Log("destroyed");
+            //Debug.Log("destroyed");
         }
     }
     void Shoot(){
-        if (demon != null){
-        fireDirection = demon.GetComponent<DemonScript>().fireDirection;
         if (fireDirection == "right"){
             fireBall.velocity = new Vector2(8, 0);
             transform.localScale = new Vector3(-1*Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }
         else {
         fireBall.velocity = new Vector2(-8, 0);
-        }
         }
     }
     void DestroyWhenFar(){
