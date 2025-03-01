@@ -8,7 +8,7 @@ public class FireBall : MonoBehaviour
     public string directionShoot;
     public Rigidbody2D fireBall;
     public float direction = 1;
-    public float puissanceDash = 2f;
+    public float puissanceDash = 8f;
     //public bool isFar = false;
     public float compteurDestroy = 15f;
 
@@ -127,10 +127,11 @@ public class FireBall : MonoBehaviour
         //fireBall.velocity = new Vector2(8 * direction, 0);
         */
     }
-    void DashArriere(){
-        //mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(-puissanceDash, 0);
-        // code
+    void DashArriere()
+    {
+        // code 
     }
+
     void DestroyWhenFar(){
         if (transform.position.x >= mainCharacter.transform.position.x + 20){
             Debug.Log("FireBall destroyed");
