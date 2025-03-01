@@ -12,36 +12,39 @@ public class ArrowScript : MonoBehaviour
     public float compteurDestroy = 15f;
     public bool hasShot = false;
     public bool hasBuff = false;
-    //public bool isFar = false;
-    public float compteurDestroy = 15f;
+    //public bool isFar = false;    
 
     // Start is called before the first frame update
     void Start()
     {
         mainCharacter = GameObject.FindGameObjectWithTag("Player");
         directionShoot = mainCharacter.GetComponent<MainCharacterScript>().direction;
-        Debug.Log(directionShoot);
-        float direction = Mathf.Sign(mainCharacter.transform.localScale.x);
+        direction = Mathf.Sign(mainCharacter.transform.localScale.x);
+        Shoot();
+        //direction = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
         BoostVitesse();
-        Shoot();
         DestroyWhenFar();
 
+    }
+    void FixedUpdate(){
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 6)
         {
-            Debug.Log("Hit Ennemi");
-            Destroy(gameObject);
+            //Debug.Log("Hit Ennemi");
+            //Destroy(gameObject);
+            enableGameObject();
         }
         if (collision.gameObject.layer == 7){
-            Debug.Log("Hit Wall");
-            Destroy(gameObject);
+            //Debug.Log("Hit Wall");
+            //Destroy(gameObject);
+            enableGameObject();
         }
     }
     void enableGameObject(){
@@ -51,7 +54,7 @@ public class ArrowScript : MonoBehaviour
             compteurDestroy-=Time.deltaTime;
         } else if (compteurDestroy < 0){
             Destroy(gameObject);
-            Debug.Log("destroyed");
+            //Debug.Log("destroyed");
         }
     }
     void BoostVitesse(){
@@ -61,8 +64,7 @@ public class ArrowScript : MonoBehaviour
         }
         if (compteurBoostVitesse>0 && hasShot == true){
             compteurBoostVitesse-=Time.deltaTime;
-            Debug.Log(compteurBoostVitesse);
-        } else if (compteurBoostVitesse < 0 && hasShot == true){
+        } else if (compteurBoostVitesse <= 0 && hasShot == true){
             mainCharacter.GetComponent<MainCharacterScript>().speed -= 10;
             hasShot = false;
         }
@@ -71,7 +73,7 @@ public class ArrowScript : MonoBehaviour
     {
         if (collision.gameObject.layer == 6)
         {
-            Debug.Log("Hit Ennemy");
+            //Debug.Log("Hit Ennemy");
             //Destroy(gameObject);
             enableGameObject();
         }
@@ -81,17 +83,18 @@ public class ArrowScript : MonoBehaviour
             enableGameObject();
         }
         if (collision.gameObject.layer == 7){
-            Debug.Log("Hit Wall");
+            //Debug.Log("Hit Wall");
             //Destroy(gameObject);
             enableGameObject();
         }
         if (collision.gameObject.layer == 3){
-            Debug.Log("Hit Ground");
+            //Debug.Log("Hit Ground");
             //Destroy(gameObject);
             enableGameObject();
         }
     }
     void Shoot(){
+        arrow.velocity = Vector2.zero;
         if (direction == 1)
         {
             transform.localScale = new Vector3(1*transform.localScale.x, transform.localScale.y, transform.localScale.z);
@@ -141,7 +144,6 @@ public class ArrowScript : MonoBehaviour
             hasShot = true;
             hasBuff = false;
         } else {
-            Debug.Log(direction);
             arrow.velocity = new Vector2(15 * direction, 0);
             //BoostVitesse();
             hasShot = true;

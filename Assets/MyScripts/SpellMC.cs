@@ -17,32 +17,32 @@ public class FireBall : MonoBehaviour
     {
         mainCharacter = GameObject.FindGameObjectWithTag("Player");
         directionShoot = mainCharacter.GetComponent<MainCharacterScript>().direction;
-        //Debug.Log(directionShoot);
-        float direction = Mathf.Sign(mainCharacter.transform.localScale.x);
+        direction = Mathf.Sign(mainCharacter.transform.localScale.x);
+        Shoot();
+        DashArriere();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Shoot();
         DestroyWhenFar();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 6)
         {
-            Debug.Log("Hit Ennemi");
+            //Debug.Log("Hit Ennemi");
             //Destroy(gameObject);
             enableGameObject();
         }
         if (collision.gameObject.tag == "DemonFireBall")
         {
-            Debug.Log("Hit Object");
+            //Debug.Log("Hit Object");
             //Destroy(gameObject);
             enableGameObject();
         }
         if (collision.gameObject.layer == 7){
-            Debug.Log("Hit Wall");
+            //Debug.Log("Hit Wall");
             //Destroy(gameObject);
             enableGameObject();
         }
@@ -79,10 +79,11 @@ public class FireBall : MonoBehaviour
             compteurDestroy-=Time.deltaTime;
         } else if (compteurDestroy < 0){
             Destroy(gameObject);
-            Debug.Log("destroyed");
+            //Debug.Log("destroyed");
         }
     }
     void Shoot(){
+        fireBall.velocity = Vector2.zero;
         if (direction == 1)
         {
             transform.localScale = new Vector3(1*transform.localScale.x, transform.localScale.y, transform.localScale.z);
@@ -127,6 +128,7 @@ public class FireBall : MonoBehaviour
         */
     }
     void DashArriere(){
+        //mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(-puissanceDash, 0);
         // code
     }
     void DestroyWhenFar(){

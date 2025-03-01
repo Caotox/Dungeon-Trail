@@ -16,12 +16,12 @@ public class FireCast : MonoBehaviour
     {
         demon = GameObject.FindGameObjectWithTag("Demon");
         demonScript = GameObject.FindGameObjectWithTag("Demon").GetComponent<DemonScript>();
+        Shoot();
     }
 
     // Update is called once per frame
     void Update()
     {   
-        Shoot();
         DestroyWhenFar();
     }
     void FixedUpdate(){

@@ -151,38 +151,32 @@ public class MainCharacterScript : MonoBehaviour
         mainCharacter.velocity = Vector2.zero; 
         mainCharacter.gravityScale = 0;
     }
-    void GetDirectionShoot(){
-        if (Input.GetKey(KeyCode.S)){
-                direction = "bas";
-                // Code lancer bas
-            }
-            else if (Input.GetKey(KeyCode.W)){
-                direction = "haut";
-            }
-            else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D)){
-                direction = "diagoDroiteHaut";
-                // Code diagonale haut droite 
-            }
-            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D)){
-                direction = "diagoDroiteBas";
-                // Code diagonale bas droite
-            }
-            else if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W)){
-                direction = "diagoHautGauche";
-                // Code diagonale haut gauche
-            }
-            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A)){
-                direction = "diagoBasGauche";
-                // Code diagonale bas gauche
-            }
-            else if (Input.GetKey(KeyCode.D)){
-                direction = "droite";
-                // Code lancer droite
-            }
-            else if (Input.GetKey(KeyCode.A)){
-                direction = "gauche";
-                // Code lancer gauche
-            }
+    void GetDirectionShoot()
+{
+    if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D)){
+        direction = "diagoDroiteHaut";
+    }
+    else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D)){
+        direction = "diagoDroiteBas";
+    }
+    else if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W)){
+        direction = "diagoHautGauche";
+    }
+    else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A)){
+        direction = "diagoBasGauche";
+    }
+    else if (Input.GetKey(KeyCode.S)){
+        direction = "bas";
+    }
+    else if (Input.GetKey(KeyCode.W)){
+        direction = "haut";
+    }
+    else if (Input.GetKey(KeyCode.D)){
+        direction = "droite";
+    }
+    else if (Input.GetKey(KeyCode.A)){
+        direction = "gauche";
+    }
     }
     void CharacterAction(){
         if (UpgradesScript.isUpgrading == false){
