@@ -10,6 +10,7 @@ public class FireCast : MonoBehaviour
     public string fireDirection;
     //public bool isFar = false;
     public float compteurDestroy = 15f;
+    public bool returnedFire = false;
 
     // Start is called before the first frame update
     void Start()
