@@ -177,7 +177,13 @@ public class MainCharacterScript : MonoBehaviour
     else if (Input.GetKey(KeyCode.A)){
         direction = "gauche";
     }
+    else {
+        if (mainCharacter.transform.localScale.x > 0){
+            direction = "droite";
+        } else {
+            direction = "gauche";
     }
+    }}
     void CharacterAction(){
         if (UpgradesScript.isUpgrading == false){
         if (Input.GetKeyDown(KeyCode.U)){

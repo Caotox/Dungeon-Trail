@@ -136,7 +136,21 @@ public class FireBall : MonoBehaviour
         if (isDashing){
             Debug.Log("dash");
             if (compteurDash > 0){
-                mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(-5, 0) * puissanceDash;
+                switch (directionShoot){
+                    case "gauche":
+                        mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(5, 0) * puissanceDash;
+                        break;
+                    case "droite":
+                        mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(-5, 0) * puissanceDash;
+                        break;
+                    case "haut":
+                        mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -5) * puissanceDash;
+                        break;
+                    case "bas":
+                        mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 5) * puissanceDash;
+                        break;
+                }
+                //mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(-5, 0) * puissanceDash;
                 compteurDash -= Time.deltaTime;
             } else if (compteurDash <= 0){
                 Debug.Log("dash not");
