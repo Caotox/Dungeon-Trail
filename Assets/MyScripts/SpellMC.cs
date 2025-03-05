@@ -13,6 +13,7 @@ public class FireBall : MonoBehaviour
     public float compteurDestroy = 15f;
     public float compteurDash = 1f;
     public bool isDashing = false;
+    public bool returnedFire = false;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,11 @@ public class FireBall : MonoBehaviour
             //Debug.Log("Hit Wall");
             //Destroy(gameObject);
             enableGameObject();
+        }
+        if (collision.gameObject.layer == 3){
+            Debug.Log("Hit Ground");
+           //Destroy(gameObject);
+           enableGameObject();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

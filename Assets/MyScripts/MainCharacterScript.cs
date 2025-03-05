@@ -39,6 +39,7 @@ public class MainCharacterScript : MonoBehaviour
     public bool canArrow = true;
     public bool canStaff = true;
     public bool canEpee = true;
+    public bool returnedFire = false;
     public float arrowDamage = 20.0f;
     public float spellDamage = 20.0f;
     public float attackDamage = 20.0f;

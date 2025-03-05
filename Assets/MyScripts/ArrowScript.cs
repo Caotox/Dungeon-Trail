@@ -46,6 +46,11 @@ public class ArrowScript : MonoBehaviour
             //Destroy(gameObject);
             enableGameObject();
         }
+        if (collision.gameObject.layer == 3){
+            //Debug.Log("Hit Ground");
+            //Destroy(gameObject);
+            enableGameObject();
+        }
     }
     void enableGameObject(){
         GetComponent<SpriteRenderer>().enabled = false;

@@ -36,17 +36,22 @@ public class FireCast : MonoBehaviour
         if (collision.gameObject.tag == "MCFleche")
         {
             //Debug.Log("Hit Fleche");
-        } else if (collision.gameObject.tag == "MCSpell"){
+        } 
+        if (collision.gameObject.tag == "MCSpell"){
             //Destroy(gameObject);
             enableGameObject();
             //Debug.Log("FireBall destroyed onCollision");
         }
-        else if (collision.gameObject.tag == "Player"){
+        if (collision.gameObject.tag == "Player"){
             //Destroy(gameObject);
             enableGameObject();
-        } else if (collision.gameObject.tag == "Demon"){
+        } 
+        if (collision.gameObject.tag == "Demon"){
             //Destroy(gameObject);
             //enableGameObject();
+        }
+        if (collision.gameObject.layer == 3){
+            enableGameObject();
         }
 
     }

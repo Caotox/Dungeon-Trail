@@ -1,4 +1,3 @@
-# implémenter boost de vitesse fleches, dash boule de feu (look events)
 # changer sprites et ajouter sprite hurt mc et ennemi
 # ajouter un compteur de magie et de fleches
 # ajouter système de vagues d'ennemis
@@ -10,3 +9,6 @@
 # créer d'autres ennemis
 # faire en sorte que les boules de feu blessent le démon si elles sont renvoyées
 # implémenter 3 flèches + chargement des flèches
+
+
+# Voir pour refaire le code dans Trigger et Collision de spell, arrow et spell demon (if -> switch ou ||)
