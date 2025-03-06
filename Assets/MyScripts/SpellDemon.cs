@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireCast : MonoBehaviour
+public class SpellDemon : MonoBehaviour
 {
     public Rigidbody2D fireBall;
     public GameObject demon;
@@ -47,9 +47,11 @@ public class FireCast : MonoBehaviour
             //Destroy(gameObject);
             enableGameObject();
         } 
-        if (collision.gameObject.tag == "Demon"){
+        if (collision.gameObject.tag == "Demon" && returnedFire){
+            demonScript.currenthP -= 30;
+            Debug.Log("Hit Demon : " + demonScript.currenthP);
             //Destroy(gameObject);
-            //enableGameObject();
+            enableGameObject();
         }
         if (collision.gameObject.layer == 3){
             enableGameObject();
@@ -67,7 +69,7 @@ public class FireCast : MonoBehaviour
         }
     }
     void Shoot(){
-        if (fireDirection == "right"){
+        if (fireDirection == "left"){
             fireBall.velocity = new Vector2(8, 0);
             transform.localScale = new Vector3(-1*Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }

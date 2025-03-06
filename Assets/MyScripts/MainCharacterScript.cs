@@ -232,7 +232,8 @@ public class MainCharacterScript : MonoBehaviour
             foreach (Collider2D projectile in hitProjectiles)
             {
                 Debug.Log("Hit " + projectile.name);
-                FireCast fireball = projectile.GetComponent<FireCast>();
+                SpellDemon fireball = projectile.GetComponent<SpellDemon>();
+                fireball.returnedFire = true;
                 if (fireball != null)
                     {
                         if (fireball.fireBall.transform.localScale.x>0)
