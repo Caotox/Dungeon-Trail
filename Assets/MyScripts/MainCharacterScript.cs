@@ -32,7 +32,7 @@ public class MainCharacterScript : MonoBehaviour
     public float timerStaff = 0;
     public float timerEpee = 0;
     public float timerArrowMax = 1.5f;
-    public float timerStaffMax = 1.5f;
+    public float timerStaffMax = 5f;
     public float timerEpeeMax = 1.5f;
     public int nombreDeSauts = 0;
     public int nombreDeSautsMax = 2;

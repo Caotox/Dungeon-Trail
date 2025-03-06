@@ -8,7 +8,7 @@ public class FireBall : MonoBehaviour
     public string directionShoot;
     public Rigidbody2D fireBall;
     public float direction = 1;
-    public float puissanceDash = 2f;
+    public float puissanceDash = 1f;
     //public bool isFar = false;
     public float compteurDestroy = 15f;
     public float compteurDash = 1f;
