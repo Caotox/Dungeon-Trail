@@ -145,9 +145,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCharacter: {fileID: 0}
+  directionShoot: 
   fireBall: {fileID: 6294299824149630286}
-  horizontalMove: 0
   direction: 0
+  compteurDestroy: 15
+  compteurDash: 0.5
+  isDashing: 0
+  returnedFire: 0
+  puissanceDash: 8
 --- !u!50 &6294299824149630286
 Rigidbody2D:
   serializedVersion: 4

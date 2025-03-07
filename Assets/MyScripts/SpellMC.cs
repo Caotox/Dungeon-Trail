@@ -8,12 +8,12 @@ public class FireBall : MonoBehaviour
     public string directionShoot;
     public Rigidbody2D fireBall;
     public float direction = 1;
-    public float puissanceDash = 2f;
     //public bool isFar = false;
     public float compteurDestroy = 15f;
-    public float compteurDash = 1f;
+    public float compteurDash = 0.5f;
     public bool isDashing = false;
     public bool returnedFire = false;
+    public float puissanceDash = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -144,16 +144,18 @@ public class FireBall : MonoBehaviour
             if (compteurDash > 0){
                 switch (directionShoot){
                     case "gauche":
-                        mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(5, 0) * puissanceDash;
+                        mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(puissanceDash, 0);
                         break;
                     case "droite":
-                        mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(-5, 0) * puissanceDash;
+                        mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(-puissanceDash, 0);
                         break;
                     case "haut":
-                        mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -5) * puissanceDash;
+                        mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -puissanceDash*1.5f);
+                        //compteurDash = 0.2f;
                         break;
                     case "bas":
-                        mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 5) * puissanceDash;
+                        mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(0, puissanceDash*1.5f);
+                        //compteurDash = 0.2f;
                         break;
                 }
                 //mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(-5, 0) * puissanceDash;
@@ -162,7 +164,7 @@ public class FireBall : MonoBehaviour
                 Debug.Log("dash not");
                 isDashing = false;
                 compteurDash = 1f;
-                mainCharacter.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                //mainCharacter.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
         }
         // code 

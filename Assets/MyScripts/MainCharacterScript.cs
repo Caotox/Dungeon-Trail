@@ -31,8 +31,8 @@ public class MainCharacterScript : MonoBehaviour
     public float timerArrow = 0;
     public float timerStaff = 0;
     public float timerEpee = 0;
-    public float timerArrowMax = 1.5f;
-    public float timerStaffMax = 1.5f;
+    public float timerArrowMax = 3f;
+    public float timerStaffMax = 5f;
     public float timerEpeeMax = 1.5f;
     public int nombreDeSauts = 0;
     public int nombreDeSautsMax = 2;
@@ -47,7 +47,7 @@ public class MainCharacterScript : MonoBehaviour
     public bool isPlateformeRight = false;
     public float attackRange = 1.3f;
     public int nombreFleches = 3;
-    public float timerRecupFleches = 5f;
+    public float timerRecupFleches = 8f;
     
     // Start is called before the first frame update
     void Start()
