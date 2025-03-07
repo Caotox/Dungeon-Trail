@@ -31,7 +31,11 @@ public class MainCharacterScript : MonoBehaviour
     public float timerArrow = 0;
     public float timerStaff = 0;
     public float timerEpee = 0;
+<<<<<<< HEAD
     public float timerArrowMax = 3f;
+=======
+    public float timerArrowMax = 1.5f;
+>>>>>>> refs/remotes/origin/main
     public float timerStaffMax = 5f;
     public float timerEpeeMax = 1.5f;
     public int nombreDeSauts = 0;
@@ -232,7 +236,8 @@ public class MainCharacterScript : MonoBehaviour
             foreach (Collider2D projectile in hitProjectiles)
             {
                 Debug.Log("Hit " + projectile.name);
-                FireCast fireball = projectile.GetComponent<FireCast>();
+                SpellDemon fireball = projectile.GetComponent<SpellDemon>();
+                fireball.returnedFire = true;
                 if (fireball != null)
                     {
                         if (fireball.fireBall.transform.localScale.x>0)
