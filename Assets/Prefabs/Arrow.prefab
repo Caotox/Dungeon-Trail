@@ -116,7 +116,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.021379769, y: 0.015271261}
@@ -172,6 +172,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCharacter: {fileID: 0}
+  directionShoot: 
   arrow: {fileID: 8595644665254322208}
-  horizontalMove: 0
   direction: 0
+  compteurBoostVitesse: 2
+  compteurDestroy: 15
+  hasShot: 0
+  hasBuff: 0

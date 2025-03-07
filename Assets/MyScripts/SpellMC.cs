@@ -8,18 +8,18 @@ public class FireBall : MonoBehaviour
     public string directionShoot;
     public Rigidbody2D fireBall;
     public float direction = 1;
-    //public bool isFar = false;
     public float compteurDestroy = 15f;
     public float compteurDash = 0.5f;
     public bool isDashing = false;
     public bool returnedFire = false;
-    public float puissanceDash = 5f;
+    public float puissanceDash = 12f;
     // Start is called before the first frame update
     void Start()
     {
         mainCharacter = GameObject.FindGameObjectWithTag("Player");
         directionShoot = mainCharacter.GetComponent<MainCharacterScript>().direction;
         direction = Mathf.Sign(mainCharacter.transform.localScale.x);
+        Debug.Log("FireBall direction : " + directionShoot);
         isDashing = true;
         Shoot();
         //DashArriere();
@@ -137,38 +137,42 @@ public class FireBall : MonoBehaviour
         */
     }
     void DashArriere()
+{
+    if (isDashing)
     {
-        if (isDashing){
-            Debug.Log("dash");
-            if (compteurDash > 0){
-                switch (directionShoot){
-                    case "gauche":
-                        mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(puissanceDash, 0);
-                        break;
-                    case "droite":
-                        mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(-puissanceDash, 0);
-                        break;
-                    case "haut":
-                        mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -puissanceDash*1.5f);
-                        //compteurDash = 0.2f;
-                        break;
-                    case "bas":
-                        mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(0, puissanceDash*1.5f);
-                        //compteurDash = 0.2f;
-                        break;
-                }
-                //mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(-5, 0) * puissanceDash;
-                compteurDash -= Time.deltaTime;
-            } else if (compteurDash <= 0){
-                Debug.Log("dash not");
-                isDashing = false;
-                compteurDash = 1f;
-                //mainCharacter.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        if (compteurDash > 0)
+        {
+            // On réinitialise la vitesse avant d'ajouter un mouvement dans la bonne direction
+            Vector2 velocity = mainCharacter.GetComponent<Rigidbody2D>().velocity;
 
+            switch (directionShoot)
+            {
+                case "gauche":
+                    //mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(puissanceDash, mainCharacter.GetComponent<Rigidbody2D>().velocity.y); 
+                    mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(puissanceDash, 0);
+                    break;
+                case "droite":
+                    //mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(-puissanceDash, mainCharacter.GetComponent<Rigidbody2D>().velocity.y); 
+                    mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(-puissanceDash, 0);
+                    break;
+                case "haut":
+                    mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(mainCharacter.GetComponent<Rigidbody2D>().velocity.x, -puissanceDash); 
+                    break;
+                case "bas":
+                    mainCharacter.GetComponent<Rigidbody2D>().velocity = new Vector2(mainCharacter.GetComponent<Rigidbody2D>().velocity.x, puissanceDash); 
+                    break;
+            }
+
+            compteurDash -= Time.deltaTime;
         }
-        // code 
+        else if (compteurDash <= 0)
+        {
+            isDashing = false;
+            compteurDash = 1f;
+            mainCharacter.GetComponent<Rigidbody2D>().velocity = Vector2.zero; 
+        }
     }
-    }
+}
 
     void DestroyWhenFar(){
         if (transform.position.x >= mainCharacter.transform.position.x + 20){

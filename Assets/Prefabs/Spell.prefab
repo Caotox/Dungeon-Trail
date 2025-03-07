@@ -152,7 +152,7 @@ MonoBehaviour:
   compteurDash: 0.5
   isDashing: 0
   returnedFire: 0
-  puissanceDash: 8
+  puissanceDash: 12
 --- !u!50 &6294299824149630286
 Rigidbody2D:
   serializedVersion: 4

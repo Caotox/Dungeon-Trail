@@ -20,6 +20,7 @@ public class ArrowScript : MonoBehaviour
         mainCharacter = GameObject.FindGameObjectWithTag("Player");
         directionShoot = mainCharacter.GetComponent<MainCharacterScript>().direction;
         direction = Mathf.Sign(mainCharacter.transform.localScale.x);
+        Debug.Log("Arrow direction : " + directionShoot);
         Shoot();
         //direction = 1;
     }
@@ -110,7 +111,7 @@ public class ArrowScript : MonoBehaviour
         }
         if (directionShoot == "gauche" || directionShoot == "droite")
         {
-            arrow.velocity = new Vector2(15 * direction, 0);
+            arrow.velocity = new Vector2(25 * direction, 0);
             //BoostVitesse();
             hasBuff = false;
             hasShot = true;
@@ -126,30 +127,30 @@ public class ArrowScript : MonoBehaviour
         }
         */
         else if (directionShoot == "diagoDroiteHaut"){
-            arrow.velocity = new Vector2(10 , 5);
+            arrow.velocity = new Vector2(25f , 12.5f);
             //BoostVitesse();
             hasShot = true;
             hasBuff = false;
         }
         else if (directionShoot == "diagoDroiteBas"){
-            arrow.velocity = new Vector2(10 , -5);
+            arrow.velocity = new Vector2(25f , -12.5f);
             //BoostVitesse();
             hasShot = true;
             hasBuff = false;
         }
         else if (directionShoot == "diagoHautGauche"){
-            arrow.velocity = new Vector2(-10 , 5);
+            arrow.velocity = new Vector2(-20f , 10f);
             //BoostVitesse();
             hasShot = true;
             hasBuff = false;
         }
         else if (directionShoot == "diagoBasGauche"){
-            arrow.velocity = new Vector2(-10 , -5);
+            arrow.velocity = new Vector2(20f , -10f);
             //BoostVitesse();
             hasShot = true;
             hasBuff = false;
         } else {
-            arrow.velocity = new Vector2(15 * direction, 0);
+            arrow.velocity = new Vector2(25f * direction, 0);
             //BoostVitesse();
             hasShot = true;
             hasBuff = false;
@@ -158,7 +159,7 @@ public class ArrowScript : MonoBehaviour
     }
     void DestroyWhenFar(){
         if (transform.position.x >= mainCharacter.transform.position.x + 20){
-            Debug.Log("Arrow destroyed");
+            //Debug.Log("Arrow destroyed");
             //Destroy(gameObject);
             enableGameObject();
         }

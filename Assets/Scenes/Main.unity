@@ -1758,7 +1758,7 @@ MonoBehaviour:
   fireBall: {fileID: 2260480109652816975, guid: 24fa908b76771f44f85f20ae890a7ec6, type: 3}
   mainCharacter: {fileID: 1326651366}
   speed: 7
-  jumpForce: 10
+  jumpForce: 15
   offSet: 0
   horizontalMove: 0
   currenthP: 0
@@ -1774,6 +1774,7 @@ MonoBehaviour:
   canArrow: 1
   canStaff: 1
   canEpee: 1
+  returnedFire: 0
   arrowDamage: 20
   spellDamage: 20
   attackDamage: 20
@@ -3157,6 +3158,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 545392700513269761, guid: bc9a29111bd3d0d41aa8b90236eb271c, type: 3}
+      propertyPath: jumpForce
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2677472172093810564, guid: bc9a29111bd3d0d41aa8b90236eb271c, type: 3}
       propertyPath: m_IsActive
       value: 0

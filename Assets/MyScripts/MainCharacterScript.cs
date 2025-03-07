@@ -163,6 +163,9 @@ public class MainCharacterScript : MonoBehaviour
     else if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W)){
         direction = "diagoHautGauche";
     }
+    else if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W)){
+        direction = "diagoHautDroite";
+    }
     else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A)){
         direction = "diagoBasGauche";
     }
