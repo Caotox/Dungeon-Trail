@@ -8,20 +8,12 @@ public class FireBall : MonoBehaviour
     public string directionShoot;
     public Rigidbody2D fireBall;
     public float direction = 1;
-<<<<<<< HEAD
-=======
-    public float puissanceDash = 1f;
->>>>>>> refs/remotes/origin/main
     //public bool isFar = false;
     public float compteurDestroy = 15f;
     public float compteurDash = 0.5f;
     public bool isDashing = false;
-<<<<<<< HEAD
     public bool returnedFire = false;
     public float puissanceDash = 5f;
-=======
->>>>>>> refs/remotes/origin/main
-
     // Start is called before the first frame update
     void Start()
     {
