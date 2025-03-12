@@ -1,18 +1,28 @@
-# implémenter 3 flèches + chargement des flèches
-# corriger le dash : plus cours, gravité, et pas de boost de vitesse dans le sens opposé (empêcher les déplacements)
-# corriger probème de lancement de boule de feu démon
+### Aseprite
+# Créer et implémenter les sprites & animations hurt pour le MC et le démon
+# Créer et impplémenter les sprites & animations des mouvements du MC (courir, descendre, sauter)
+# Créer et implémenter les sprites & animations des mouvements du démon (avancer / rester immobile)
+## Créer et implémenter une amélioration des flèches et spells pour qu'ils soient dynamiques (particules qui changent)
+## Créer et implémenter les animations d'attaques
+## Ajouter un système de particules (exemple Hayku the Robot)
+# Créer de nouveaux tileset
 
-# changer sprites et ajouter sprite hurt mc et ennemi
+### Codage
+# Créer un système : 3 flèches, 3 sec de CD mais 15 sec de recharge
+## Implémenter la visibilité du nombre de flèches
+# Ajouter un système de mana pour le spell
+## Implémenter une visibilité graphique de la barre de mana pour le spell
+### Ajouter un système de vagues d'ennemi et créer une récompense à la fin de ces vagues
 
-# ajouter un compteur de magie et de fleches
+### Optimisation
+# Améliorer le dash pour qu'au ressenti il soit plus smooth et permissif
+# Amélioration le mouvement du personange
+# Réorganiser le code des Trigger & Collision pour les spell, flèches, spell demon
+# Créer plusieurs updates individuelles et leurs effets
+# Créer d'autres salles
 
-# ajouter système de vagues d'ennemis
-# créer plusieurs vagues fonctionnelles
+### Corrections
+# Problème de lancement de boule de feu démon (sens de lancement)
 
-# se renseigner sur la génération aléatoire de salles
-# créer d'autres salles
-# créer d'autres ennemis
-
-# Voir pour refaire le code dans Trigger et Collision de spell, arrow et spell demon (if -> switch ou ||)
-
-# implémenter chaque upgrade individuellement
+### Histoire
+# Commencer à réfléchir à l'histoire --> pour l'histoire s'aider de RPG Maker MZ
