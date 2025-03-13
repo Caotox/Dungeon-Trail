@@ -33,52 +33,20 @@ public class FireBall : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 6)
+        if (collision.gameObject.layer == 6 || collision.gameObject.layer == 7 || collision.gameObject.layer == 3 || collision.gameObject.tag == "DemonFireBall")
         {
             //Debug.Log("Hit Ennemi");
             //Destroy(gameObject);
             enableGameObject();
         }
-        if (collision.gameObject.tag == "DemonFireBall")
-        {
-            //Debug.Log("Hit Object");
-            //Destroy(gameObject);
-            enableGameObject();
-        }
-        if (collision.gameObject.layer == 7){
-            //Debug.Log("Hit Wall");
-            //Destroy(gameObject);
-            enableGameObject();
-        }
-        if (collision.gameObject.layer == 3){
-            Debug.Log("Hit Ground");
-           //Destroy(gameObject);
-           enableGameObject();
-        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 6)
+        if (collision.gameObject.layer == 6 || collision.gameObject.layer == 7 || collision.gameObject.layer == 3 || collision.gameObject.tag == "DemonFireBall")
         {
             Debug.Log("Hit Ennemy");
             //Destroy(gameObject);
             enableGameObject();
-        }
-        if (collision.gameObject.tag == "DemonFireBall")
-        {
-            Debug.Log("Hit Object");
-            //Destroy(gameObject);
-            enableGameObject();
-        }
-        if (collision.gameObject.layer == 7){
-            Debug.Log("Hit Wall");
-            //Destroy(gameObject);
-            enableGameObject();
-        }
-        if (collision.gameObject.layer == 3){
-            Debug.Log("Hit Ground");
-           //Destroy(gameObject);
-           enableGameObject();
         }
     }
     void enableGameObject(){

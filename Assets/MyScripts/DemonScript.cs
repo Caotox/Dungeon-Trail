@@ -6,9 +6,8 @@ public class DemonScript : MonoBehaviour
 {
     public GameObject demonCharacter;
     public bool isDead = false;
-    public bool hasCreated = false;
-    public bool hasDropped = false;
-    public bool hasGenerated = false;
+    bool hasCreated = false;
+    bool hasGenerated = false;
     public int randomNumber;
     public float currenthP;
     public float xposition;

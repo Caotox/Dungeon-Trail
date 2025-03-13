@@ -8,7 +8,7 @@ public class ArrowScript : MonoBehaviour
     public string directionShoot;
     public Rigidbody2D arrow;
     public float direction;
-    public float compteurBoostVitesse = 2f;
+    float compteurBoostVitesse = 2f;
     public float compteurDestroy = 15f;
     public bool hasShot = false;
     public bool hasBuff = false;
@@ -36,19 +36,9 @@ public class ArrowScript : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 6)
+        if (collision.gameObject.layer == 6 || collision.gameObject.layer == 7 || collision.gameObject.layer == 3 || collision.gameObject.tag == "DemonFireBall")
         {
             //Debug.Log("Hit Ennemi");
-            //Destroy(gameObject);
-            enableGameObject();
-        }
-        if (collision.gameObject.layer == 7){
-            //Debug.Log("Hit Wall");
-            //Destroy(gameObject);
-            enableGameObject();
-        }
-        if (collision.gameObject.layer == 3){
-            //Debug.Log("Hit Ground");
             //Destroy(gameObject);
             enableGameObject();
         }
@@ -77,24 +67,9 @@ public class ArrowScript : MonoBehaviour
         }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 6)
+        if (collision.gameObject.layer == 6 || collision.gameObject.layer == 7 || collision.gameObject.layer == 3 || collision.gameObject.tag == "DemonFireBall")
         {
             //Debug.Log("Hit Ennemy");
-            //Destroy(gameObject);
-            enableGameObject();
-        }
-        if (collision.gameObject.tag == "DemonFireBall")
-        {
-            //Destroy(gameObject);
-            enableGameObject();
-        }
-        if (collision.gameObject.layer == 7){
-            //Debug.Log("Hit Wall");
-            //Destroy(gameObject);
-            enableGameObject();
-        }
-        if (collision.gameObject.layer == 3){
-            //Debug.Log("Hit Ground");
             //Destroy(gameObject);
             enableGameObject();
         }

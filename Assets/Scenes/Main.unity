@@ -1766,8 +1766,8 @@ MonoBehaviour:
   timerArrow: 0
   timerStaff: 0
   timerEpee: 0
-  timerArrowMax: 1.5
-  timerStaffMax: 1.5
+  timerArrowMax: 3
+  timerStaffMax: 5
   timerEpeeMax: 1.5
   nombreDeSauts: 0
   nombreDeSautsMax: 2
@@ -1782,7 +1782,7 @@ MonoBehaviour:
   isPlateformeRight: 0
   attackRange: 1.3
   nombreFleches: 3
-  timerRecupFleches: 5
+  timerRecupFleches: 12
 --- !u!50 &1326651366
 Rigidbody2D:
   serializedVersion: 4
@@ -3161,6 +3161,18 @@ PrefabInstance:
     - target: {fileID: 545392700513269761, guid: bc9a29111bd3d0d41aa8b90236eb271c, type: 3}
       propertyPath: jumpForce
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 545392700513269761, guid: bc9a29111bd3d0d41aa8b90236eb271c, type: 3}
+      propertyPath: timerArrowMax
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 545392700513269761, guid: bc9a29111bd3d0d41aa8b90236eb271c, type: 3}
+      propertyPath: timerStaffMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 545392700513269761, guid: bc9a29111bd3d0d41aa8b90236eb271c, type: 3}
+      propertyPath: timerRecupFleches
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2677472172093810564, guid: bc9a29111bd3d0d41aa8b90236eb271c, type: 3}
       propertyPath: m_IsActive

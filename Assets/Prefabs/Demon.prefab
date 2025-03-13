@@ -147,9 +147,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   demonCharacter: {fileID: 2607614247352294123}
   isDead: 0
-  hasCreated: 0
-  hasDropped: 0
-  hasGenerated: 0
   randomNumber: 0
   currenthP: 0
   xposition: 0
@@ -163,7 +160,7 @@ MonoBehaviour:
   demonRigid: {fileID: 4800649578405060030}
   mainCharTransform: {fileID: 0}
   timerStop: 3
-  timerStop2: 2
+  timerStop2: 1.5
   upgrade: {fileID: 4898754526935916231, guid: b0297e4192a854148b79e1c28f31c1d9, type: 3}
 --- !u!95 &4692355304194786340
 Animator:

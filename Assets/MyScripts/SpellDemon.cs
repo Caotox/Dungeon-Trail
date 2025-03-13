@@ -34,18 +34,12 @@ public class SpellDemon : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "MCFleche")
+        if (collision.gameObject.tag == "MCFleche" || collision.gameObject.tag == "MCSpell" || collision.gameObject.tag == "Player" || collision.gameObject.layer == 3){
+            //Destroy(gameObject);
+            enableGameObject();
+        }
         {
             //Debug.Log("Hit Fleche");
-        } 
-        if (collision.gameObject.tag == "MCSpell"){
-            //Destroy(gameObject);
-            enableGameObject();
-            //Debug.Log("FireBall destroyed onCollision");
-        }
-        if (collision.gameObject.tag == "Player"){
-            //Destroy(gameObject);
-            enableGameObject();
         } 
         if (collision.gameObject.tag == "Demon" && returnedFire){
             demonScript.currenthP -= 30;
@@ -53,10 +47,6 @@ public class SpellDemon : MonoBehaviour
             //Destroy(gameObject);
             enableGameObject();
         }
-        if (collision.gameObject.layer == 3){
-            enableGameObject();
-        }
-
     }
     void enableGameObject(){
         GetComponent<SpriteRenderer>().enabled = false;

@@ -47,7 +47,7 @@ public class MainCharacterScript : MonoBehaviour
     public bool isPlateformeRight = false;
     public float attackRange = 1.3f;
     public int nombreFleches = 3;
-    public float timerRecupFleches = 8f;
+    public float timerRecupFleches = 12f;
     
     // Start is called before the first frame update
     void Start()
@@ -204,14 +204,17 @@ public class MainCharacterScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Y)){
             if (canArrow){
-            GetDirectionShoot();
-            animator.SetTrigger("isBowing");
-            //bow.SetActive(true);
-            //staff.SetActive(false);
-            //sword.SetActive(false);
-                Instantiate(arrow, new Vector2(transform.position.x+offSet, transform.position.y), transform.rotation);
-                timerArrow = timerArrowMax;
-                canArrow = false;
+                if (nombreFleches > 0){
+                    nombreFleches -= 1;
+                    GetDirectionShoot();
+                    animator.SetTrigger("isBowing");
+                    //bow.SetActive(true);
+                    //staff.SetActive(false);
+                    //sword.SetActive(false);
+                    Instantiate(arrow, new Vector2(transform.position.x+offSet, transform.position.y), transform.rotation);
+                    timerArrow = timerArrowMax;
+                    canArrow = false;
+                }
             }
         }
         if (Input.GetKeyDown(KeyCode.I)){
@@ -282,6 +285,15 @@ public class MainCharacterScript : MonoBehaviour
         }
         if (timerStaff <= 0){
             canStaff = true;
+        }
+        if (nombreFleches < 3){
+            if (timerRecupFleches <= 0){
+                nombreFleches += 1;
+                timerRecupFleches = 12f;
+            }
+            else{
+                timerRecupFleches -= Time.deltaTime;
+            }
         }
         else{
             timerStaff -= Time.deltaTime;
