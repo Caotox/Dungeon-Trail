@@ -8,7 +8,6 @@
 # Créer de nouveaux tileset
 
 ### Codage
-# Créer un système : 3 flèches, 3 sec de CD mais 15 sec de recharge
 ## Implémenter la visibilité du nombre de flèches
 # Ajouter un système de mana pour le spell
 ## Implémenter une visibilité graphique de la barre de mana pour le spell
@@ -17,14 +16,17 @@
 ### Optimisation
 # Améliorer le dash pour qu'au ressenti il soit plus smooth et permissif --> dash vers le lors de boule de feu vers le haut : cohérent ? & dash vers le haut avec boule de feu vers le bas : plus rapide et garde le personnage un peu en l'air après
 # Amélioration le mouvement du personange
-# Réorganiser le code des Trigger & Collision pour les spell, flèches, spell demon
 # Créer plusieurs updates individuelles et leurs effets
 # Créer d'autres salles
 # Supprimer le tag 'public' de toute les variables et éléments ne nécessitant pas ce tag
 # Réfléchir à mettre la flèche en trigger (est ce que ça pose problème ?)
 
 ### Corrections
-# Problème de lancement de boule de feu démon (sens de lancement)
 
 ### Histoire
 # Commencer à réfléchir à l'histoire --> pour l'histoire s'aider de RPG Maker MZ
+
+### DONE :
+# Créer un système : 3 flèches, 3 sec de CD mais 15 sec de recharge
+# Problème de lancement de boule de feu démon (sens de lancement)
+# Réorganiser le code des Trigger & Collision pour les spell, flèches, spell demon

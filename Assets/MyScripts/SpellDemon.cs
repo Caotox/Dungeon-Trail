@@ -17,6 +17,8 @@ public class SpellDemon : MonoBehaviour
     {
         demon = GameObject.FindGameObjectWithTag("Demon");
         demonScript = GameObject.FindGameObjectWithTag("Demon").GetComponent<DemonScript>();
+        getPos();
+        Debug.Log(fireDirection);
         Shoot();
     }
 
@@ -24,7 +26,7 @@ public class SpellDemon : MonoBehaviour
     void Update()
     {
         DestroyWhenFar();
-        getPos();
+        //getPos();
     }
     void FixedUpdate(){
         //Debug.Log(demonScript.currenthP);
@@ -59,7 +61,7 @@ public class SpellDemon : MonoBehaviour
         }
     }
     void Shoot(){
-        if (fireDirection == "left"){
+        if (fireDirection == "right"){
             fireBall.velocity = new Vector2(8, 0);
             transform.localScale = new Vector3(-1*Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }
