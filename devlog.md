@@ -8,6 +8,7 @@
 # Créer de nouveaux tileset
 
 ### Codage
+# Ajouter une production automatique de mana
 ## Implémenter la visibilité du nombre de flèches
 # Ajouter un système de mana pour le spell
 ## Implémenter une visibilité graphique de la barre de mana pour le spell

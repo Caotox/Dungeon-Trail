@@ -48,6 +48,8 @@ public class MainCharacterScript : MonoBehaviour
     public float attackRange = 1.3f;
     public int nombreFleches = 3;
     public float timerRecupFleches = 12f;
+    public float manaCount = 100f;
+    public float manaMax = 100f;
     
     // Start is called before the first frame update
     void Start()
@@ -191,7 +193,7 @@ public class MainCharacterScript : MonoBehaviour
     void CharacterAction(){
         if (UpgradesScript.isUpgrading == false){
         if (Input.GetKeyDown(KeyCode.U)){
-            if (canStaff){
+            if (canStaff && manaCount >= 20){
             GetDirectionShoot();
             animator.SetTrigger("isStaffing");
             //staff.SetActive(true);
@@ -200,6 +202,7 @@ public class MainCharacterScript : MonoBehaviour
             Instantiate(fireBall, new Vector2(transform.position.x+offSet, transform.position.y+1), transform.rotation);
             timerStaff = timerStaffMax;
             canStaff = false;
+            manaCount -= 20;
             }
         }
         if (Input.GetKeyDown(KeyCode.Y)){
