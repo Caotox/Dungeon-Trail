@@ -95,11 +95,13 @@ public class MainCharacterScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision){
         if (collision.gameObject.tag == "DemonFireBall"){
             currenthP -= 30;
+            Hurt();
             Debug.Log("HP: " + currenthP);
         }
         if (collision.gameObject.layer == 6){
             currenthP -= 20;
             Debug.Log("HP: " + currenthP);
+            Hurt();
         }
     }
     private void OnCollisionExit2D(Collision2D collision){
@@ -356,6 +358,9 @@ public class MainCharacterScript : MonoBehaviour
         mainCharacter.gravityScale = 3;
     }
     }
+    }
+    void Hurt(){
+        // code
     }
 }
 
