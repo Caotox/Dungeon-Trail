@@ -50,7 +50,9 @@ public class MainCharacterScript : MonoBehaviour
     public float timerRecupFleches = 12f;
     public float manaCount = 100f;
     public float manaMax = 100f;
-    
+    public float manaTimer = 1f;
+    public float manaTimerMax = 1f;
+    public float manaUp = 2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,7 @@ public class MainCharacterScript : MonoBehaviour
         gameObject.SetActive(true);
         currenthP = maxHP;
         offSet = 2;
+        manaCount = manaMax;
     }
 
     // Update is called once per frame
@@ -307,7 +310,18 @@ public class MainCharacterScript : MonoBehaviour
         else{
             timerEpee -= Time.deltaTime;
         }
-
+        if (manaTimer <= 0){
+            if (manaCount+manaUp > manaMax){
+                manaCount = manaMax;
+            }
+            else if (manaCount < manaMax){
+                manaCount += manaUp;
+            }
+            manaTimer = manaTimerMax;
+        }
+        else{
+            manaTimer -= Time.deltaTime;
+        }
     }
     void Death(){
     if (currenthP <= 0){
