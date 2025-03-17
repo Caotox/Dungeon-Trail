@@ -23,6 +23,7 @@ public class DemonScript : MonoBehaviour
     public float timerStop = 3f;
     public float timerStop2 = 1.5f;
     public GameObject upgrade;
+    public Animator demonAnimator;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,12 +48,14 @@ public class DemonScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "MCSpell")
         {
+            demonAnimator.SetTrigger("isHurt");
             float spellDamage = mainCharacter.GetComponent<MainCharacterScript>().spellDamage;
             currenthP -= spellDamage;
             //Debug.Log("Hit FireBall : " + currenthP);
         }
         if (collision.gameObject.tag == "MCFleche")
         {
+            demonAnimator.SetTrigger("isHurt");
             float arrowDamage = mainCharacter.GetComponent<MainCharacterScript>().arrowDamage;
             currenthP -= arrowDamage;
             //Debug.Log("Hit Fleche : " + currenthP);

@@ -61,6 +61,7 @@ public class MainCharacterScript : MonoBehaviour
         currenthP = maxHP;
         offSet = 2;
         manaCount = manaMax;
+        //Instantiate(mainCharacter, new Vector3(-7.043f, -2.07f), mainCharacter.transform.rotation);
     }
 
     // Update is called once per frame
@@ -94,11 +95,12 @@ public class MainCharacterScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision){
         if (collision.gameObject.tag == "DemonFireBall"){
+            animator.SetTrigger("isHurt");
             currenthP -= 30;
-            Hurt();
             Debug.Log("HP: " + currenthP);
         }
         if (collision.gameObject.layer == 6){
+            animator.SetTrigger("isHurt");
             currenthP -= 20;
             Debug.Log("HP: " + currenthP);
             Hurt();

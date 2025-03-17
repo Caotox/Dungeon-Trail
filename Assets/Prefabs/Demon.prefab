@@ -154,7 +154,7 @@ MonoBehaviour:
   maxHP: 100
   enemy_fireball: {fileID: 2327044844596829419, guid: a7749cb14e2cb6d4b84f08dfd82fc343, type: 3}
   timer: 2
-  mainCharacter: {fileID: 0}
+  mainCharacter: {fileID: 8576445832996587005, guid: b8dcabf0d7309422eb106d5850fb16f4, type: 3}
   fireDirection: 
   temp_scale: 0
   demonRigid: {fileID: 4800649578405060030}
@@ -162,6 +162,7 @@ MonoBehaviour:
   timerStop: 3
   timerStop2: 1.5
   upgrade: {fileID: 4898754526935916231, guid: b0297e4192a854148b79e1c28f31c1d9, type: 3}
+  demonAnimator: {fileID: 4692355304194786340}
 --- !u!95 &4692355304194786340
 Animator:
   serializedVersion: 5

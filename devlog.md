@@ -1,5 +1,4 @@
 ### Aseprite
-# Créer et implémenter les sprites & animations hurt pour le MC et le démon
 # Créer et impplémenter les sprites & animations des mouvements du MC (courir, descendre, sauter)
 # Créer et implémenter les sprites & animations des mouvements du démon (avancer / rester immobile)
 ## Créer et implémenter une amélioration des flèches et spells pour qu'ils soient dynamiques (particules qui changent)
@@ -10,6 +9,7 @@
 ### Codage
 ## Implémenter une visibilité graphique de la barre de mana pour le spell
 ### Ajouter un système de vagues d'ennemi et créer une récompense à la fin de ces vagues
+### Faire en sorte de pouvoir utiliser le demon & le MC en Prefabs
 
 ### Optimisation
 # Améliorer le dash pour qu'au ressenti il soit plus smooth et permissif --> dash vers le lors de boule de feu vers le haut : cohérent ? & dash vers le haut avec boule de feu vers le bas : plus rapide et garde le personnage un peu en l'air après
@@ -18,6 +18,7 @@
 # Créer d'autres salles
 # Supprimer le tag 'public' de toute les variables et éléments ne nécessitant pas ce tag
 # Réfléchir à mettre la flèche en trigger (est ce que ça pose problème ?)
+
 
 ### Corrections
 
@@ -31,3 +32,4 @@
 ## Implémenter la visibilité du nombre de flèches
 # Ajouter un système de mana pour le spell
 # Ajouter une production automatique de mana
+# Créer et implémenter les sprites & animations hurt pour le MC et le démon
