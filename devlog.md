@@ -8,7 +8,6 @@
 # Créer de nouveaux tileset
 
 ### Codage
-# Ajouter une production automatique de mana
 ## Implémenter une visibilité graphique de la barre de mana pour le spell
 ### Ajouter un système de vagues d'ennemi et créer une récompense à la fin de ces vagues
 
@@ -31,3 +30,4 @@
 # Réorganiser le code des Trigger & Collision pour les spell, flèches, spell demon
 ## Implémenter la visibilité du nombre de flèches
 # Ajouter un système de mana pour le spell
+# Ajouter une production automatique de mana
