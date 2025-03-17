@@ -200,7 +200,9 @@ public class MainCharacterScript : MonoBehaviour
     void CharacterAction(){
         if (UpgradesScript.isUpgrading == false){
         if (Input.GetKeyDown(KeyCode.U)){
+            Debug.Log("oui");
             if (canStaff && manaCount >= 20){
+                Debug.Log("NON");
             GetDirectionShoot();
             animator.SetTrigger("isStaffing");
             //staff.SetActive(true);
@@ -296,6 +298,8 @@ public class MainCharacterScript : MonoBehaviour
         if (timerStaff <= 0){
             canStaff = true;
         }
+        else{
+            timerStaff -= Time.deltaTime;
         if (nombreFleches < 3){
             if (timerRecupFleches <= 0){
                 nombreFleches += 1;
@@ -305,8 +309,6 @@ public class MainCharacterScript : MonoBehaviour
                 timerRecupFleches -= Time.deltaTime;
             }
         }
-        else{
-            timerStaff -= Time.deltaTime;
         }
         if (timerEpee <= 0){
             canEpee = true;

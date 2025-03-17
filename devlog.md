@@ -5,9 +5,11 @@
 ## Créer et implémenter les animations d'attaques
 ## Ajouter un système de particules (exemple Hayku the Robot)
 # Créer de nouveaux tileset
+## Implémenter une visibilité graphique de la barre de mana pour le spell
 
 ### Codage
-## Implémenter une visibilité graphique de la barre de mana pour le spell
+## Améliorer le système de vagues selon un système de classe
+# Faire en sorte que les démons ne puissent pas se chevaucher
 ### Ajouter un système de vagues d'ennemi et créer une récompense à la fin de ces vagues
 ### Faire en sorte de pouvoir utiliser le demon & le MC en Prefabs
 
@@ -21,6 +23,7 @@
 
 
 ### Corrections
+# Corriger le problème de direction de la boule de feu du démon lors du spawn
 
 ### Histoire
 # Commencer à réfléchir à l'histoire --> pour l'histoire s'aider de RPG Maker MZ

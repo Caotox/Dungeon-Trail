@@ -16,6 +16,7 @@ public class WaveManagement : MonoBehaviour
     {
         GetGameObjects();
         waves  = new List<GameObject>{demon};
+        SpawnEnnemies();
     }
 
     // Update is called once per frame
@@ -23,8 +24,13 @@ public class WaveManagement : MonoBehaviour
     {
         
     }
+    void SpawnEnnemies(){
+        Instantiate(demon, spawnPoint1.transform.position, Quaternion.identity);
+        Instantiate(demon, spawnPoint2.transform.position, Quaternion.identity);
+        Instantiate(demon, spawnPoint3.transform.position, Quaternion.identity);
+    }
     void GetGameObjects(){
-        demon = GameObject.FindGameObjectWithTag("Demon");
+        //demon = GameObject.FindGameObjectWithTag("Demon");
         spawnPoint1 = GameObject.Find("SpawnPoint1");
         spawnPoint2 = GameObject.Find("SpawnPoint2");
         spawnPoint3 = GameObject.Find("SpawnPoint3");

@@ -18,7 +18,6 @@ public class SpellDemon : MonoBehaviour
         demon = GameObject.FindGameObjectWithTag("Demon");
         demonScript = GameObject.FindGameObjectWithTag("Demon").GetComponent<DemonScript>();
         getPos();
-        Debug.Log(fireDirection);
         Shoot();
     }
 

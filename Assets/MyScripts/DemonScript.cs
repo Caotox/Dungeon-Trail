@@ -30,6 +30,8 @@ public class DemonScript : MonoBehaviour
         currenthP = maxHP;
         mainCharacter = GameObject.FindGameObjectWithTag("Player");
         mainCharTransform = mainCharacter.GetComponent<Transform>();
+        demonCharacter.GetComponent<Rigidbody2D>().gravityScale = 10;
+        Debug.Log(fireDirection);
     }
 
     // Update is called once per frame
@@ -59,6 +61,10 @@ public class DemonScript : MonoBehaviour
             float arrowDamage = mainCharacter.GetComponent<MainCharacterScript>().arrowDamage;
             currenthP -= arrowDamage;
             //Debug.Log("Hit Fleche : " + currenthP);
+        }
+        if (collision.gameObject.layer == 3)
+        {
+            demonCharacter.GetComponent<Rigidbody2D>().gravityScale = 0;
         }
     }
     void FlipCharacter()
