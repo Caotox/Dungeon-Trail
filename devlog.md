@@ -11,7 +11,6 @@
 ## Améliorer le système de vagues selon un système de classe
 # Faire en sorte que les démons ne puissent pas se chevaucher
 ### Ajouter un système de vagues d'ennemi et créer une récompense à la fin de ces vagues
-### Faire en sorte de pouvoir utiliser le demon & le MC en Prefabs
 
 ### Optimisation
 # Améliorer le dash pour qu'au ressenti il soit plus smooth et permissif --> dash vers le lors de boule de feu vers le haut : cohérent ? & dash vers le haut avec boule de feu vers le bas : plus rapide et garde le personnage un peu en l'air après
@@ -19,7 +18,6 @@
 # Créer plusieurs updates individuelles et leurs effets
 # Créer d'autres salles
 # Supprimer le tag 'public' de toute les variables et éléments ne nécessitant pas ce tag
-# Réfléchir à mettre la flèche en trigger (est ce que ça pose problème ?)
 
 
 ### Corrections
@@ -36,3 +34,5 @@
 # Ajouter un système de mana pour le spell
 # Ajouter une production automatique de mana
 # Créer et implémenter les sprites & animations hurt pour le MC et le démon
+### Faire en sorte de pouvoir utiliser le demon & le MC en Prefabs
+# Réfléchir à mettre la flèche en trigger (est ce que ça pose problème ?)
