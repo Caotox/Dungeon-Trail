@@ -11,12 +11,12 @@ public class SuiviCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCharacter = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+      mainCharacter = GameObject.FindGameObjectWithTag("Player");
       transform.position = Vector3.SmoothDamp(transform.position, mainCharacter.transform.position + offset, ref velocity, timeOffset);
     }
 }

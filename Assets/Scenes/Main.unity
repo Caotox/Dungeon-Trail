@@ -893,7 +893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7023025f4719d3646aacbd39497dff02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCharacter: {fileID: 1326651364}
+  mainCharacter: {fileID: 8576445832996587005, guid: b8dcabf0d7309422eb106d5850fb16f4, type: 3}
   offset: {x: 3, y: 2, z: -10}
   timeOffset: 0
   velocity: {x: 0, y: 0, z: 0}

@@ -30,8 +30,7 @@ public class DemonScript : MonoBehaviour
         currenthP = maxHP;
         mainCharacter = GameObject.FindGameObjectWithTag("Player");
         mainCharTransform = mainCharacter.GetComponent<Transform>();
-        demonCharacter.GetComponent<Rigidbody2D>().gravityScale = 10;
-        Debug.Log(fireDirection);
+        demonCharacter.GetComponent<Rigidbody2D>().gravityScale = 20;
     }
 
     // Update is called once per frame

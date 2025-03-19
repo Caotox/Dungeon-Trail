@@ -19,6 +19,7 @@ public class SpellDemon : MonoBehaviour
         demonScript = GameObject.FindGameObjectWithTag("Demon").GetComponent<DemonScript>();
         getPos();
         Shoot();
+        Debug.Log(fireDirection);
     }
 
     // Update is called once per frame
@@ -64,7 +65,7 @@ public class SpellDemon : MonoBehaviour
             fireBall.velocity = new Vector2(8, 0);
             transform.localScale = new Vector3(-1*Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }
-        else {
+        else if (fireDirection == "left"){
         fireBall.velocity = new Vector2(-8, 0);
         }
     }

@@ -10,6 +10,16 @@ public class WaveManagement : MonoBehaviour
     public GameObject spawnPoint1;
     public GameObject spawnPoint2;
     public GameObject spawnPoint3;
+    public class WaveDiff1{
+    }
+    public class WaveDiff2{
+    }
+    public class WaveDiff3{
+    }
+    public class WaveDiff4{
+    }
+    public class WaveDiff5{
+    }
     
     // Start is called before the first frame update
     void Start()
