@@ -31,6 +31,9 @@ public class DemonScript : MonoBehaviour
         mainCharacter = GameObject.FindGameObjectWithTag("Player");
         mainCharTransform = mainCharacter.GetComponent<Transform>();
         demonCharacter.GetComponent<Rigidbody2D>().gravityScale = 20;
+        FlipCharacter();
+        Debug.Log(mainCharacter.transform.position.x + " " + transform.position.x);
+        Debug.Log(fireDirection);
     }
 
     // Update is called once per frame
