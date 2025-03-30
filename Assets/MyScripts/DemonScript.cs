@@ -32,8 +32,6 @@ public class DemonScript : MonoBehaviour
         mainCharTransform = mainCharacter.GetComponent<Transform>();
         demonCharacter.GetComponent<Rigidbody2D>().gravityScale = 20;
         FlipCharacter();
-        Debug.Log(mainCharacter.transform.position.x + " " + transform.position.x);
-        Debug.Log(fireDirection);
     }
 
     // Update is called once per frame
@@ -76,7 +74,7 @@ public class DemonScript : MonoBehaviour
             temp_scale = 1;
             fireDirection = "left";
         }
-        else
+        else if (mainCharacter.transform.position.x > transform.position.x)
         {
             temp_scale = -1;
             fireDirection = "right";
@@ -147,19 +145,28 @@ public class DemonScript : MonoBehaviour
             }
     }
     }
-    void Shoot(){
-        if (UpgradesScript.isUpgrading == false && isDead == false){
-        if (timer <= 0){
+    void Shoot()
+{
+    //Debug.Log(fireDirection);
+    //Debug.Log(mainCharacter.transform.position.x + " " + transform.position.x);
+    if (UpgradesScript.isUpgrading == false && isDead == false)
+    {
+        if (timer <= 0)
+        {
             if (fireDirection == "right")
-                Instantiate(enemy_fireball, new Vector2(transform.position.x+1, transform .position.y), transform.rotation);
-            else {
-                Instantiate(enemy_fireball, new Vector2(transform.position.x-1, transform .position.y), transform.rotation);
-                }
+            {
+                Instantiate(enemy_fireball, new Vector2(transform.position.x + 1, transform.position.y), transform.rotation);
+            }
+            else 
+            {
+                Instantiate(enemy_fireball, new Vector2(transform.position.x - 1, transform.position.y), transform.rotation);
+            }
             timer = 4f;
         }
-        else{
+        else
+        {
             timer -= Time.deltaTime;
         }
     }
-    }
+}
 }

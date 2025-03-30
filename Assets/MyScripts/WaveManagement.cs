@@ -10,15 +10,17 @@ public class WaveManagement : MonoBehaviour
     public GameObject spawnPoint1;
     public GameObject spawnPoint2;
     public GameObject spawnPoint3;
-    public class WaveDiff1{
-    }
-    public class WaveDiff2{
-    }
-    public class WaveDiff3{
-    }
-    public class WaveDiff4{
-    }
-    public class WaveDiff5{
+    public class Wave{
+        GameObject[] enemies;
+        string qualiteReward;
+        int enemiesWave;
+        Transform[] spawnPoints;
+        public Wave(GameObject[] enemies, string qualiteReward, int enemiesWave, Transform[] spawnPoints){
+            this.enemies = enemies;
+            this.qualiteReward = qualiteReward;
+            this.enemiesWave = enemiesWave;
+            this.spawnPoints = spawnPoints;
+        }
     }
     
     // Start is called before the first frame update
@@ -33,8 +35,7 @@ public class WaveManagement : MonoBehaviour
     void Update()
     {
         
-    }
-    void SpawnEnnemies(){
+    }    void SpawnEnnemies(){
         Instantiate(demon, spawnPoint1.transform.position, Quaternion.identity);
         Instantiate(demon, spawnPoint2.transform.position, Quaternion.identity);
         Instantiate(demon, spawnPoint3.transform.position, Quaternion.identity);

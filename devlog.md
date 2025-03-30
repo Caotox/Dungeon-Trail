@@ -9,19 +9,19 @@
 
 ### Codage
 ## Améliorer le système de vagues selon un système de classe
-# Faire en sorte que les démons ne puissent pas se chevaucher
 ### Ajouter un système de vagues d'ennemi et créer une récompense à la fin de ces vagues
 
 ### Optimisation
+# Faire en sorte que les démons ne puissent pas se chevaucher --> Amélioration du mouvement des démons
 # Améliorer le dash pour qu'au ressenti il soit plus smooth et permissif --> dash vers le lors de boule de feu vers le haut : cohérent ? & dash vers le haut avec boule de feu vers le bas : plus rapide et garde le personnage un peu en l'air après
-# Amélioration le mouvement du personange
+# Amélioration du mouvement du personange
 # Créer plusieurs updates individuelles et leurs effets
 # Créer d'autres salles
 # Supprimer le tag 'public' de toute les variables et éléments ne nécessitant pas ce tag
 
 
 ### Corrections
-# Corriger le problème de direction de la boule de feu du démon lors du spawn
+# Corriger le problème de direction de la boule de feu du démon lors du spawn --> le problème viens du fait que la récupération des directions se fait sur le même script donnc il faut soit communiquer dans l'autre sens soit calculer dans l'autre script
 
 ### Histoire
 # Commencer à réfléchir à l'histoire --> pour l'histoire s'aider de RPG Maker MZ

@@ -17,9 +17,9 @@ public class SpellDemon : MonoBehaviour
     {
         demon = GameObject.FindGameObjectWithTag("Demon");
         demonScript = GameObject.FindGameObjectWithTag("Demon").GetComponent<DemonScript>();
-        getPos();
+        //getPos();
         Shoot();
-        Debug.Log(fireDirection);
+        //Debug.Log(fireDirection);
     }
 
     // Update is called once per frame
@@ -32,7 +32,14 @@ public class SpellDemon : MonoBehaviour
         //Debug.Log(demonScript.currenthP);
     }
     void getPos(){
-        fireDirection = demon.GetComponent<DemonScript>().fireDirection;
+        //fireDirection = demon.GetComponent<DemonScript>().fireDirection;
+        if (demon != null){
+            fireDirection = demon.GetComponent<DemonScript>().fireDirection;
+        } else {
+            returnedFire = true;
+            fireDirection = "left";
+            //Debug.Log("returnedFire : " + returnedFire);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -61,12 +68,16 @@ public class SpellDemon : MonoBehaviour
         }
     }
     void Shoot(){
+        Debug.Log(fireDirection);
         if (fireDirection == "right"){
+            Debug.Log("right SWITCH");
             fireBall.velocity = new Vector2(8, 0);
             transform.localScale = new Vector3(-1*Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }
         else if (fireDirection == "left"){
-        fireBall.velocity = new Vector2(-8, 0);
+            Debug.Log("left SWITCH");
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            fireBall.velocity = new Vector2(-8, 0);
         }
     }
     void DestroyWhenFar(){
