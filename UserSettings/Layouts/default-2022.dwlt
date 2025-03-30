@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 94
+  controlID: 46
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -218,8 +218,8 @@ MonoBehaviour:
     y: 0
     width: 1037
     height: 591
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -301,9 +301,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 544.5
-    width: 979
-    height: 250.5
+    y: 664
+    width: 1322
+    height: 327
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -335,14 +335,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Prefabs
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: /Users/tonio/Docs/Git_Repos/Roguelite-GameProject-Unity
+  m_LastProjectPath: C:\Users\arocq\Git-Game-Project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 26670000
-    m_LastClickedID: 26406
-    m_ExpandedIDs: 0000000028630000
+    m_SelectedIDs: 76680000
+    m_LastClickedID: 26742
+    m_ExpandedIDs: 000000002863000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -395,8 +395,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 2a610000
-    m_LastClickedInstanceID: 24874
+    m_SelectedInstanceIDs: 46620000
+    m_LastClickedInstanceID: 25158
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000014620000d661000034630000d4610000e0610000c8660000e86100006a640000000000005e620000b864000042620000
     m_RenameOverlay:
@@ -858,9 +858,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -4.471628, y: 3.2742205, z: -0.13479072}
+    m_Target: {x: -2.1695855, y: 0.39410838, z: -0.08310181}
     speed: 2
-    m_Value: {x: -4.471628, y: 3.2742205, z: -0.13479072}
+    m_Value: {x: -2.1695855, y: 0.39410838, z: -0.08310181}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -910,9 +910,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 21.511295
+    m_Target: 16.342403
     speed: 2
-    m_Value: 21.511295
+    m_Value: 16.342403
   m_Ortho:
     m_Target: 1
     speed: 2
