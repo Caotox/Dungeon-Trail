@@ -156,10 +156,12 @@ public class DemonScript : MonoBehaviour
             if (fireDirection == "right")
             {
                 Instantiate(enemy_fireball, new Vector2(transform.position.x + 1, transform.position.y), transform.rotation);
+                GameObject.FindGameObjectWithTag("DemonFireBall").GetComponent<SpellDemon>().fireDirection = "right";
             }
             else 
             {
                 Instantiate(enemy_fireball, new Vector2(transform.position.x - 1, transform.position.y), transform.rotation);
+                GameObject.FindGameObjectWithTag("DemonFireBall").GetComponent<SpellDemon>().fireDirection = "left";
             }
             timer = 4f;
         }

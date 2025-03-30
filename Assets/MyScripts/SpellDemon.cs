@@ -32,14 +32,19 @@ public class SpellDemon : MonoBehaviour
         //Debug.Log(demonScript.currenthP);
     }
     void getPos(){
-        //fireDirection = demon.GetComponent<DemonScript>().fireDirection;
-        if (demon != null){
-            fireDirection = demon.GetComponent<DemonScript>().fireDirection;
-        } else {
-            returnedFire = true;
-            fireDirection = "left";
-            //Debug.Log("returnedFire : " + returnedFire);
-        }
+    if (GameObject.FindGameObjectWithTag("Player") != null && GameObject.FindGameObjectWithTag("Demon") != null)
+{
+    if (GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterScript>().transform.position.x < 
+        GameObject.FindGameObjectWithTag("Demon").GetComponent<DemonScript>().transform.position.x)
+    {
+        fireDirection = "left";
+    }
+    else if (GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterScript>().transform.position.x > 
+             GameObject.FindGameObjectWithTag("Demon").GetComponent<DemonScript>().transform.position.x)
+    {
+        fireDirection = "right";
+    }
+    }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -68,7 +73,6 @@ public class SpellDemon : MonoBehaviour
         }
     }
     void Shoot(){
-        Debug.Log(fireDirection);
         if (fireDirection == "right"){
             Debug.Log("right SWITCH");
             fireBall.velocity = new Vector2(8, 0);

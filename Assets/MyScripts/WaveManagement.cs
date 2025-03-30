@@ -47,3 +47,5 @@ public class WaveManagement : MonoBehaviour
         spawnPoint3 = GameObject.Find("SpawnPoint3");
     }
 }
+
+
