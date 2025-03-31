@@ -13,6 +13,8 @@ Launch Unity Hub.
 Click on "Add project from disk".
 Select the repository folder you cloned.
 # 4. You're Good to Go! 🚀
+
+# 5. You can also open the Sprites-game-project to see all my Aseprites files used in my Game Project
 Please note that:
 
 This is not the final version of the game.
