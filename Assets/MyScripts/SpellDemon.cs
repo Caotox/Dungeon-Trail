@@ -17,9 +17,24 @@ public class SpellDemon : MonoBehaviour
     {
         demon = GameObject.FindGameObjectWithTag("Demon");
         demonScript = GameObject.FindGameObjectWithTag("Demon").GetComponent<DemonScript>();
+        if (GameObject.FindGameObjectWithTag("Player") != null && GameObject.FindGameObjectWithTag("Demon") != null)
+{
+    if (GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterScript>().transform.position.x < 
+        GameObject.FindGameObjectWithTag("Demon").GetComponent<DemonScript>().transform.position.x)
+    {
+        Debug.Log(GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterScript>().transform.position.x + " < " + GameObject.FindGameObjectWithTag("Demon").GetComponent<DemonScript>().transform.position.x);
+        fireDirection = "left";
+    }
+    else if (GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterScript>().transform.position.x > 
+             GameObject.FindGameObjectWithTag("Demon").GetComponent<DemonScript>().transform.position.x)
+    {
+        Debug.Log(GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterScript>().transform.position.x + " > " + GameObject.FindGameObjectWithTag("Demon").GetComponent<DemonScript>().transform.position.x);
+        fireDirection = "right";
+    }
+    }
+    Debug.Log(fireDirection);
         //getPos();
         Shoot();
-        //Debug.Log(fireDirection);
     }
 
     // Update is called once per frame
@@ -74,12 +89,10 @@ public class SpellDemon : MonoBehaviour
     }
     void Shoot(){
         if (fireDirection == "right"){
-            Debug.Log("right SWITCH");
             fireBall.velocity = new Vector2(8, 0);
             transform.localScale = new Vector3(-1*Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }
         else if (fireDirection == "left"){
-            Debug.Log("left SWITCH");
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             fireBall.velocity = new Vector2(-8, 0);
         }

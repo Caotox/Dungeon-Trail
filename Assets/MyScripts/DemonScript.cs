@@ -17,6 +17,7 @@ public class DemonScript : MonoBehaviour
     public float timer = 2f;
     public GameObject mainCharacter;
     public string fireDirection;
+    public string fireTempo;
     public float temp_scale;
     public Rigidbody2D demonRigid;
     public Transform mainCharTransform;
@@ -147,22 +148,21 @@ public class DemonScript : MonoBehaviour
     }
     void Shoot()
 {
-    //Debug.Log(fireDirection);
-    //Debug.Log(mainCharacter.transform.position.x + " " + transform.position.x);
     if (UpgradesScript.isUpgrading == false && isDead == false)
     {
         if (timer <= 0)
         {
+            GameObject fireballInstance;
+
             if (fireDirection == "right")
             {
-                Instantiate(enemy_fireball, new Vector2(transform.position.x + 1, transform.position.y), transform.rotation);
-                GameObject.FindGameObjectWithTag("DemonFireBall").GetComponent<SpellDemon>().fireDirection = "right";
+                fireballInstance = Instantiate(enemy_fireball, new Vector2(transform.position.x + 1, transform.position.y), transform.rotation);
             }
-            else 
+            else
             {
-                Instantiate(enemy_fireball, new Vector2(transform.position.x - 1, transform.position.y), transform.rotation);
-                GameObject.FindGameObjectWithTag("DemonFireBall").GetComponent<SpellDemon>().fireDirection = "left";
+                fireballInstance = Instantiate(enemy_fireball, new Vector2(transform.position.x - 1, transform.position.y), transform.rotation);
             }
+
             timer = 4f;
         }
         else
