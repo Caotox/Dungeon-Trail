@@ -1,4 +1,4 @@
-# Game-Project : Dungeon Trail
+# Game-Project : Roguelite (Unity 2D)
 How to See My Game Project
 
 # 1. Clone the Repository
